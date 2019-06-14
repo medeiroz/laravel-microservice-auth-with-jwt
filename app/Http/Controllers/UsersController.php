@@ -31,15 +31,15 @@ class UsersController extends Controller
          * Filtros
          * Ordernação
          **/
-        $resources = User::treat($request->all());
+        $resources = User::treat($request);
 
         //Verifica se precisa buscar todos os registros ou paginado
-        if($request->per_page == 'all'){
+        if ($request->per_page == 'all') {
             $resources = ['data' => $resources->get()];
 
-        }else{
+        } else {
 
-            $per_page = ((int) $request->per_page) ?: 15;
+            $per_page = ((int)$request->per_page) ?: 15;
             $resources = $resources->paginate($per_page);
 
             //Adiciona a request na paginação
@@ -60,8 +60,9 @@ class UsersController extends Controller
     {
         $aux_request = $request->all();
 
-        if ($aux_request['password'])
+        if ($aux_request['password']) {
             $aux_request['password'] = Hash::make($aux_request['password']);
+        }
 
         $user = User::create($aux_request);
 
@@ -88,8 +89,10 @@ class UsersController extends Controller
     {
         $aux_request = $request->all();
 
-        if (isset($aux_request['password']))
+        if (isset($aux_request['password'])) {
             $aux_request['password'] = Hash::make($aux_request['password']);
+        }
+
 
         $user->update($aux_request);
 

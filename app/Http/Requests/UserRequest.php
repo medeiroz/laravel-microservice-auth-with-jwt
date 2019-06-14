@@ -1,40 +1,35 @@
 <?php
 
 namespace App\Http\Requests;
+use Illuminate\Validation\Rule;
 
-use Illuminate\Foundation\Http\FormRequest;
-
-class UserRequest extends FormRequest
+class UserRequest extends BaseRequest
 {
-
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
 
     /**
      * Get the validation rules that apply to the request.
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         $rules = [
-            'name' => 'required|string|max: 254',
-            'email' => 'required|email|unique:users,email',
+            'name' => 'string|max: 254',
+            'email' => 'email|unique:users,email',
+            'password' => 'string|between:6,20',
         ];
 
-        if ($this->password || $this->isMethod('POST'))
-            $rules['password'] = 'required|string|between:6,20';
 
-        if ($this->user)
-            $rules['email'] .= ','.$this->user->id;
+        if ($this->methodIsPostOrPut()) {
+            $this->applyRequiredInAllRules($rules);
+        }
+
+
+        if ($this->methodIsPutOrPatch() && !empty($this->user->id)) {
+            $rules['email'] .= ',' . $this->user->id;
+        }
 
         return $rules;
     }
+
 }
