@@ -24,3 +24,15 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN echo pt_BR.UTF-8 UTF-8 > /etc/locale.gen && locale-gen
 
 WORKDIR /application
+
+RUN composer update && \
+    php artisan cache:clear && \
+    php artisan config:clear && \
+    php artisan view:clear && \
+    php artisan route:clear && \
+    php artisan optimize:clear && \
+    php artisan event:clear && \
+    php artisan clear-compiled && \
+    cp .env.example .env && \
+    php artisan jwt:secret && \
+    php artisan key:generate
