@@ -17,7 +17,6 @@ class UsersController extends Controller
     {
         $this->user = $user;
 
-
         $this->middleware('role:admin');
     }
 
@@ -37,9 +36,9 @@ class UsersController extends Controller
             $aux_request['password'] = Hash::make($aux_request['password']);
         }
 
-        $user = User::create($aux_request);
+        $resource = User::create($aux_request);
 
-        return response()->json($user, 201);
+        return response()->json($resource, 201);
     }
 
 

@@ -43,20 +43,23 @@ abstract class BaseRequest extends FormRequest
     /**
      * Let all roles as required
      * @param array $rules
+     * @param array $excepts
      */
-    public function applyRequiredInAllRules(array &$rules): void
+    public function applyRequiredInRules(array &$rules, array $excepts): void
     {
-        array_walk($rules, function(&$rule) {
-            if (is_string($rule)) {
+        array_walk($rules, function(&$rule, $key, $excepts) {
+
+            if (is_string($rule) && !in_array($key, $excepts)) {
                 $rule = 'required|' . $rule;
 
-            } elseif (is_array($rule)) {
+            } elseif (is_array($rule) && !in_array($key, $excepts)) {
                 array_unshift($rule, 'required');
 
-            } elseif (is_object($rule)) {
+            } elseif (is_object($rule) && !in_array($key, $excepts)) {
                 $rule = ['required', $rule];
 
             }
-        });
+
+        }, $excepts);
     }
 }

@@ -14,14 +14,14 @@ class UserRequest extends BaseRequest
     public function rules(): array
     {
         $rules = [
-            'name' => 'string|max: 254',
+            'name' => 'string|max:254',
             'email' => 'email|unique:users,email',
             'password' => 'string|between:6,20',
         ];
 
 
         if ($this->methodIsPostOrPut()) {
-            $this->applyRequiredInAllRules($rules);
+            $this->applyRequiredInRules($rules);
         }
 
 
