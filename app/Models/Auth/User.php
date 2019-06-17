@@ -1,15 +1,19 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Auth;
 
+use Illuminate\Database\Query\Builder;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
 use App\Traits\Treat;
 
 class User extends Authenticatable implements JWTSubject
 {
-    use Notifiable, Treat;
+    use Notifiable;
+    use EntrustUserTrait;
+    use Treat;
 
     /**
      * The attributes that are mass assignable.
@@ -17,7 +21,9 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
     ];
 
     /**
@@ -26,7 +32,8 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
     /**
@@ -57,6 +64,12 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function scopeByEmail(Builder $builder, string $email)
+    {
+        return $builder->where($this->table . ".email", $email)
+            ->first();
     }
 
 }

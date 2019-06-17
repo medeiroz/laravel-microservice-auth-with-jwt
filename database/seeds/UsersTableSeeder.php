@@ -13,9 +13,12 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'Flávio Medeiros',
-            'email' => 'smedeiros.flavio@gmail.com',
-            'password' => Hash::make('secret'),
+            [
+                'name' => 'Flávio Medeiros',
+                'email' => 'smedeiros.flavio@gmail.com',
+                'password' => Hash::make('secret'),
+                'created_at' => now(),
+            ],
         ]);
     }
 }

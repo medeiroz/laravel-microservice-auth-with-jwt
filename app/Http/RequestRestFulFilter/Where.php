@@ -2,39 +2,12 @@
 
 
 namespace App\Http\RequestRestFulFilter;
-use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Builder;
 
-class Where
+
+class Where extends BaseRequestRestFullFilter
 {
 
-    private $builder;
-    private $request;
-    private $fillable;
-
     private $fieldsSearch;
-
-    const OPERATORS = [
-        'eq',
-        'lt',
-        'lte',
-        'gt',
-        'gte',
-        'regex',
-        'before', // alises lt
-        'after', // alises gt
-    ];
-
-
-    public function __construct(Builder $builder, Request $request)
-    {
-        $this->builder = $builder;
-        $this->request = $request;
-        $this->fillable = $this->builder->getModel()->getFillable();
-
-        $this->fillable = array_merge($this->fillable, ['created_at', 'updated_at', 'id']);
-        $this->fieldsSearch = array_intersect_key($this->request->all(), array_flip($this->fillable));
-    }
 
 
     /**
@@ -42,6 +15,8 @@ class Where
      */
     public function apply(): void
     {
+        $this->fieldsSearch = array_intersect_key($this->request->all(), array_flip($this->fillable));
+
         $this
             ->applyEq()
             ->applyLt()

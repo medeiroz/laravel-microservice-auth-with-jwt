@@ -2,59 +2,57 @@
 
 
 namespace App\Http\RequestRestFulFilter;
-use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Builder;
 
-class OrderBy
+
+class OrderBy extends BaseRequestRestFullFilter
 {
 
-    private $builder;
-    private $request;
-    private $fillable;
-
-
-    public function __construct(Builder $builder, Request $request)
+    public function apply(): void
     {
-        $this->builder = $builder;
-        $this->request = $request;
-        $this->fillable = $this->builder->getModel()->getFillable();
-        $this->fillable = array_merge($this->fillable, ['created_at', 'updated_at', 'id']);
+        if (!empty($this->request->sort)) {
 
+            $columns = $this->columnsStringToArray($this->request->sort);
+
+            foreach ($columns as $column) {
+
+                $columnName = $this->getColumnName($column);
+                $orderBy = $this->getOrderByColumnName($column);
+
+                if (in_array($columnName, $this->fillable)) {
+                    $this->builder->orderBy($columnName, $orderBy);
+                }
+            }
+        }
     }
 
 
-    /**
-     * Ordenação dos registros
-     */
-    public function apply(): void
+    private function columnsStringToArray(string $columns)
     {
+        return explode(',', $columns);
+    }
 
 
-        if (!empty($this->request->sort)) {
-
-            $aux_explode = explode(',', $this->request->sort);
-
-            foreach ($aux_explode as $value) {
-
-                $firstLetter = substr($value,0,1);
-
-                $orderBy = ($firstLetter === '-') ? 'desc' : 'asc';
-
-                if (in_array($firstLetter, ['-', '+'])) {
-                    $columnBy = substr($value,1);
-                } else {
-                    $columnBy = $value;
-                }
-
-                if (in_array($columnBy, $this->fillable)) {
-                    $this->builder->orderBy($columnBy, $orderBy);
-                }
-
-            }
+    private function getFirstLetter(string $string)
+    {
+        return substr($string,0,1);
+    }
 
 
-        }
+    private function getColumnName(string $column)
+    {
+        $firstLetter = $this->getFirstLetter($column);
 
+        return (in_array($firstLetter, ['-', '+']))
+            ? substr($column,1)
+            : $column;
+    }
+
+
+    private function getOrderByColumnName(string $column)
+    {
+        $firstLetter = $this->getFirstLetter($column);
+
+        return ($firstLetter === '-') ? 'desc' : 'asc';;
     }
 
 

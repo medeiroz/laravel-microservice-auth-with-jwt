@@ -10,11 +10,6 @@ class BaseModel extends Model
 {
     use Treat;
 
-    /**
-     * The "booting" method of the model.
-     *
-     * @return void
-     */
     protected static function boot()
     {
         parent::boot();
