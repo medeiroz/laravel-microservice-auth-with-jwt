@@ -16,7 +16,10 @@ class PermissionsController extends Controller
     {
         $this->permission = $permission;
 
-        $this->middleware('role:admin');
+        $this->middleware('permission:permissions.read');
+        $this->middleware('permission:permissions.store')->only('store');
+        $this->middleware('permission:permissions.update')->only('update');
+        $this->middleware('permission:permissions.destroy')->only('destroy');
     }
 
 

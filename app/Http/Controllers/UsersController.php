@@ -17,7 +17,11 @@ class UsersController extends Controller
     {
         $this->user = $user;
 
-        $this->middleware('role:admin');
+        $this->middleware('permission:users.read');
+        $this->middleware('permission:users.store')->only('store');
+        $this->middleware('permission:users.update')->only('update');
+        $this->middleware('permission:users.destroy')->only('destroy');
+
     }
 
 

@@ -29,6 +29,11 @@ class PermissionsTableSeeder extends Seeder
                 'created_at' => now(),
             ],
             [
+                'name' => 'users.destroy',
+                'display_name' => 'Usuarios / Exclusão',
+                'created_at' => now(),
+            ],
+            [
                 'name' => 'users.roles.read',
                 'display_name' => 'Usuários / Papéis / Visualização',
                 'created_at' => now(),
@@ -41,6 +46,11 @@ class PermissionsTableSeeder extends Seeder
             [
                 'name' => 'users.roles.update',
                 'display_name' => 'Usuários / Papéis / Atualização',
+                'created_at' => now(),
+            ],
+            [
+                'name' => 'users.roles.destroy',
+                'display_name' => 'Usuários / Papéis / Exclusão',
                 'created_at' => now(),
             ],
 
@@ -62,6 +72,11 @@ class PermissionsTableSeeder extends Seeder
                 'created_at' => now(),
             ],
             [
+                'name' => 'roles.destroy',
+                'display_name' => 'Papéis / Exclusão',
+                'created_at' => now(),
+            ],
+            [
                 'name' => 'roles.permissions.read',
                 'display_name' => 'Papéis / Permissões / Visualização',
                 'created_at' => now(),
@@ -74,6 +89,11 @@ class PermissionsTableSeeder extends Seeder
             [
                 'name' => 'roles.permissions.update',
                 'display_name' => 'Papéis / Permissões / Atualização',
+                'created_at' => now(),
+            ],
+            [
+                'name' => 'roles.permissions.destroy',
+                'display_name' => 'Papéis / Permissões / Exclusão',
                 'created_at' => now(),
             ],
 
@@ -92,6 +112,11 @@ class PermissionsTableSeeder extends Seeder
             [
                 'name' => 'permissions.update',
                 'display_name' => 'Permissões / Atualização',
+                'created_at' => now(),
+            ],
+            [
+                'name' => 'permissions.destroy',
+                'display_name' => 'Permissões / Exclusão',
                 'created_at' => now(),
             ],
         ]);
