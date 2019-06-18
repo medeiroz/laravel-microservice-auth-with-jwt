@@ -28,6 +28,9 @@ class UsersController extends Controller
     public function index(Request $request): JsonResponse
     {
         $resources = User::treat($request);
+
+        dd($resources[0]->first_name);
+
         return response()->json($resources);
     }
 

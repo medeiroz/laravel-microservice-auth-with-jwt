@@ -66,10 +66,15 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-    public function scopeByEmail(Builder $builder, string $email)
+    public function scopeByEmail($builder, string $email)
     {
         return $builder->where($this->table . ".email", $email)
             ->first();
+    }
+
+    public function getFirstNameAttribute()
+    {
+        return explode(' ', $this->name)[0];
     }
 
 }
