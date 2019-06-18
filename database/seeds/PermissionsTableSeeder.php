@@ -12,28 +12,86 @@ class PermissionsTableSeeder extends Seeder
     public function run()
     {
         DB::table('permissions')->insert([
+            //USERS
             [
-                'name' => 'users_index',
-                'display_name' => 'Usuarios - Listagem',
-                'description' => 'Listagem dos usuários',
+                'name' => 'users.read',
+                'display_name' => 'Usuarios / Visualização',
                 'created_at' => now(),
             ],
             [
-                'name' => 'users_show',
-                'display_name' => 'Usuarios - Visualização',
-                'description' => 'Visualização das informações do usuário',
+                'name' => 'users.store',
+                'display_name' => 'Usuarios / Criação',
                 'created_at' => now(),
             ],
             [
-                'name' => 'users_store',
-                'display_name' => 'Usuarios - Criação',
-                'description' => 'Criação de um novo Usuário',
+                'name' => 'users.update',
+                'display_name' => 'Usuarios / Atualização',
                 'created_at' => now(),
             ],
             [
-                'name' => 'users_update',
-                'display_name' => 'Usuarios - Atualização',
-                'description' => 'Atualização de um Usuário existente',
+                'name' => 'users.roles.read',
+                'display_name' => 'Usuários / Papéis / Visualização',
+                'created_at' => now(),
+            ],
+            [
+                'name' => 'users.roles.store',
+                'display_name' => 'Usuários / Papéis / Criação',
+                'created_at' => now(),
+            ],
+            [
+                'name' => 'users.roles.update',
+                'display_name' => 'Usuários / Papéis / Atualização',
+                'created_at' => now(),
+            ],
+
+
+            // ROLES
+            [
+                'name' => 'roles.read',
+                'display_name' => 'Papéis / Visualização',
+                'created_at' => now(),
+            ],
+            [
+                'name' => 'roles.store',
+                'display_name' => 'Papéis / Criação',
+                'created_at' => now(),
+            ],
+            [
+                'name' => 'roles.update',
+                'display_name' => 'Papéis / Atualização',
+                'created_at' => now(),
+            ],
+            [
+                'name' => 'roles.permissions.read',
+                'display_name' => 'Papéis / Permissões / Visualização',
+                'created_at' => now(),
+            ],
+            [
+                'name' => 'roles.permissions.store',
+                'display_name' => 'Papéis / Permissões / Criação',
+                'created_at' => now(),
+            ],
+            [
+                'name' => 'roles.permissions.update',
+                'display_name' => 'Papéis / Permissões / Atualização',
+                'created_at' => now(),
+            ],
+
+
+            // PERMISSIONS
+            [
+                'name' => 'permissions.read',
+                'display_name' => 'Permissões / Visualização',
+                'created_at' => now(),
+            ],
+            [
+                'name' => 'permissions.store',
+                'display_name' => 'Permissões / Criação',
+                'created_at' => now(),
+            ],
+            [
+                'name' => 'permissions.update',
+                'display_name' => 'Permissões / Atualização',
                 'created_at' => now(),
             ],
         ]);

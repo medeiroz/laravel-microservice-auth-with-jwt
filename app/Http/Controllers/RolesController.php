@@ -15,13 +15,13 @@ class RolesController extends Controller
     public function __construct(Role $role)
     {
         $this->role = $role;
-
-        $this->middleware('role:admin');
     }
 
 
     public function index(Request $request): JsonResponse
     {
+        $this->middleware('role:admin');
+
         $resources = Role::treat($request);
         return response()->json($resources);
     }

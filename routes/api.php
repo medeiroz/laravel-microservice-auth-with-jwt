@@ -26,6 +26,7 @@ Route::name('api.')->group(function(){
         Route::apiResources([
             'users' => 'UsersController',
             'roles' => 'RolesController',
+            'permissions' => 'PermissionsController',
         ]);
 
         //Route::get('transfers/{id}/{relations}/{index?}', 'TransfersController@relations')

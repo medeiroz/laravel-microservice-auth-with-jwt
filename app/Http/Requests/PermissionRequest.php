@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 use Illuminate\Validation\Rule;
 
-class RoleRequest extends BaseRequest
+class PermissionRequest extends BaseRequest
 {
 
     /**
@@ -14,7 +14,7 @@ class RoleRequest extends BaseRequest
     public function rules(): array
     {
         $rules = [
-            'name' => 'string|max:254|regex:/^[a-zA-Z\_\.]+$/u|unique:roles,name',
+            'name' => 'string|max:254|regex:/^[a-zA-Z\_\.]+$/u|unique:permissions,name',
             'display_name' => 'string|max:254',
             'description' => 'string|max:254',
         ];
@@ -25,8 +25,8 @@ class RoleRequest extends BaseRequest
         }
 
 
-        if ($this->methodIsPutOrPatch() && !empty($this->role->id)) {
-            $rules['name'] .= ',' . $this->role->id;
+        if ($this->methodIsPutOrPatch() && !empty($this->permission->id)) {
+            $rules['name'] .= ',' . $this->permission->id;
         }
 
         return $rules;
