@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\Models\Auth\User;
+use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -22,7 +23,7 @@ class UserTest extends TestCase
             'id' => 1,
             'name' => 'Flávio Medeiros',
             'email' => 'smedeiros.flavio@gmail.com',
-            'password' => bcrypt('secret'),
+            'password' => Hash::check('secret'),
             'created_at' => now(),
             'updated_at' => now(),
         ]);
