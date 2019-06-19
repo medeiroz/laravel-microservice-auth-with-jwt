@@ -45,7 +45,7 @@ abstract class BaseRequest extends FormRequest
      * @param array $rules
      * @param array $excepts
      */
-    public function applyRequiredInRules(array &$rules, array $excepts): void
+    public function applyRequiredInRules(array &$rules, array $excepts = []): void
     {
         array_walk($rules, function(&$rule, $key, $excepts) {
 

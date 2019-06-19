@@ -23,12 +23,11 @@ class UserTest extends TestCase
             'id' => 1,
             'name' => 'Flávio Medeiros',
             'email' => 'smedeiros.flavio@gmail.com',
-            'password' => Hash::check('secret'),
+            'password' => Hash::make('secret'),
             'created_at' => now(),
             'updated_at' => now(),
         ]);
 
-        echo $user->updated_at;
 
         $this->assertEquals($user->first_name, "Flávio");
     }

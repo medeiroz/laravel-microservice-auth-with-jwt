@@ -32,9 +32,7 @@ class PermissionsController extends Controller
 
     public function store(PermissionRequest $request): JsonResponse
     {
-
         $resource = Permission::create($request->all());
-
         return response()->json($resource, 201);
     }
 
@@ -48,7 +46,6 @@ class PermissionsController extends Controller
     public function update(PermissionRequest $request, Permission $permission): JsonResponse
     {
         $permission->update($request->all());
-
         return response()->json($permission, 201);
     }
 

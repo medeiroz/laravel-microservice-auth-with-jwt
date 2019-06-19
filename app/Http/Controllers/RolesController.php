@@ -25,8 +25,6 @@ class RolesController extends Controller
 
     public function index(Request $request): JsonResponse
     {
-        $this->middleware('role:admin');
-
         $resources = Role::treat($request);
         return response()->json($resources);
     }
@@ -34,9 +32,7 @@ class RolesController extends Controller
 
     public function store(RoleRequest $request): JsonResponse
     {
-
         $resource = Role::create($request->all());
-
         return response()->json($resource, 201);
     }
 
@@ -50,7 +46,6 @@ class RolesController extends Controller
     public function update(RoleRequest $request, Role $role): JsonResponse
     {
         $role->update($request->all());
-
         return response()->json($role, 201);
     }
 

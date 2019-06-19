@@ -3,6 +3,7 @@
 namespace App\Models\Auth;
 
 use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -61,7 +62,7 @@ class User extends Authenticatable implements JWTSubject
      *
      * @return array
      */
-    public function getJWTCustomClaims()
+    public function getJWTCustomClaims(): array
     {
         return [];
     }
@@ -72,9 +73,14 @@ class User extends Authenticatable implements JWTSubject
             ->first();
     }
 
-    public function getFirstNameAttribute()
+    public function getFirstNameAttribute(): string
     {
         return explode(' ', $this->name)[0];
+    }
+
+    public function setPasswordAttribute(string $value): void
+    {
+        $this->attributes['password'] = Hash::make($value);
     }
 
 }

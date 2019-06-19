@@ -19,11 +19,9 @@ class UserRequest extends BaseRequest
             'password' => 'string|between:6,20',
         ];
 
-
         if ($this->methodIsPostOrPut()) {
             $this->applyRequiredInRules($rules);
         }
-
 
         if ($this->methodIsPutOrPatch() && !empty($this->user->id)) {
             $rules['email'] .= ',' . $this->user->id;

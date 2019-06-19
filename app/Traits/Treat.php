@@ -22,6 +22,6 @@ trait Treat
         $where->apply();
         $orderBy->apply();
 
-        return $paginate->applyAndGetResouces();
+        return $paginate->applyAndGetResources();
     }
 }

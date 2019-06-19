@@ -25,7 +25,7 @@ class Paginate extends BaseRequestRestFullFilter
     }
 
 
-    public function applyAndGetResouces()
+    public function applyAndGetResources()
     {
         $this->apply();
         return $this->resources;
