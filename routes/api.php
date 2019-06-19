@@ -29,6 +29,9 @@ Route::name('api.')->group(function(){
             'permissions' => 'PermissionsController',
         ]);
 
+        Route::get('users/{user}/roles', 'UsersRolesController@index')->name('users.roles.index');
+        Route::put('users/{user}/roles', 'UsersRolesController@sync')->name('users.roles.sync');
+
         //Route::get('transfers/{id}/{relations}/{index?}', 'TransfersController@relations')
         //    ->name('transfers.relations');
 

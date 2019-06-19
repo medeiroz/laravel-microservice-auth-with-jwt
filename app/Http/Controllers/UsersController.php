@@ -45,7 +45,7 @@ class UsersController extends Controller
 
     public function update(UserRequest $request, User $user): JsonResponse
     {
-        $user->update($request->all());
+        $user->fill($request->all())->save();
         return response()->json($user, 201);
     }
 
