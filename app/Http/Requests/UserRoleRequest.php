@@ -16,11 +16,16 @@ class UserRoleRequest extends BaseRequest
         $rules = [
             'roles' => [
                 'required',
-                'array',
-                Rule::exists('roles', 'id')
+                'array'
+            ],
+            'roles.*' => [
+                'required',
+                'string',
+                Rule::exists('roles', 'name')
             ]
         ];
 
         return $rules;
     }
+
 }
