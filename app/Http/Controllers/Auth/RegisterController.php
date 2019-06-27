@@ -2,71 +2,112 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Http\Requests\UserRequest;
+use App\Mail\AccountRecovery;
+use App\Mail\AccountVerification;
+use App\Models\Auth\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Http\JsonResponse;
+
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
-    use RegistersUsers;
 
     /**
-     * Where to redirect users after registration.
-     *
-     * @var string
+     * @var User
      */
-    protected $redirectTo = '/home';
+    private $user;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function __construct(User $user)
     {
-        $this->middleware('guest');
+        $this->user = $user;
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
+    public function register(UserRequest $request): JsonResponse
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        try {
+            $email = null;
+
+            DB::transaction(function() use ($request, &$email) {
+
+                $user = User::create($request->all());
+                $email = $this->sendEmailVerification($user->email);
+
+            });
+
+            return $email;
+
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], Response::HTTP_BAD_REQUEST);
+        }
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
-    protected function create(array $data)
+
+    public function sendEmailVerification(string $email): JsonResponse
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        try {
+            $user = $this->user->byEmail($email)->first();
+
+            if ($user && $user->hasVerifiedEmail() === false) {
+                Mail::send(new AccountVerification($user));
+                return response()->json(['message' => 'Access your email to verify your account'], Response::HTTP_CREATED);
+            }
+
+            return response()->json(['message' => 'Your account not exist or has already been verified previously'], Response::HTTP_BAD_REQUEST);
+
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+
     }
+
+
+    public function verification(Request $request)
+    {
+        if ($request->hasValidSignature()) {
+
+            $user = User::find($request->user);
+
+            if ($user && $user->hasVerifiedEmail() === false) {
+                $user->markEmailAsVerified();
+                return response()->json(['message' => 'Account successfully verified'], Response::HTTP_OK);
+            }
+        }
+
+        return response()->json(['message' => 'Link expired'], Response::HTTP_BAD_REQUEST);
+    }
+
+
+    public function recovery(string $email)
+    {
+        $user = $this->user->byEmail($email)->first();
+
+        if (!$user) {
+            return response()->json(['message' => 'Not Found'], Response::HTTP_BAD_REQUEST);
+        }
+
+        return $this->sendEmailRecovery($user);
+    }
+
+
+    private function sendEmailRecovery(User $user)
+    {
+        Mail::send(new AccountRecovery($user));
+        return response()->json(['message' => 'Access your email to verify your account'], Response::HTTP_CREATED);
+    }
+
+
+    public function changePassword(Request $request)
+    {
+        if ($request->hasValidSignature()) {
+            dd($request->all());
+        }
+
+        return response()->json(['message' => 'Link expired'], Response::HTTP_BAD_REQUEST);
+    }
+
 }

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\Hash;
+use mysql_xdevapi\Exception;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -72,9 +73,9 @@ class User extends Authenticatable implements JWTSubject
 
     public function scopeByEmail($builder, string $email)
     {
-        return $builder->where($this->table . ".email", $email)
-            ->first();
+        return $builder->where($this->table . ".email", $email);
     }
+
 
     public function getFirstNameAttribute(): string
     {

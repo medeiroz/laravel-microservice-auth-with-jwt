@@ -13,15 +13,27 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::name('api.')->group(function(){
+Route::name('api.')->group(function() {
 
-    Route::post('auth/login', 'AuthController@login')->name('login');
+
+    Route::namespace('Auth')->name('auth.')->prefix('auth')->group(function() {
+        Route::post('login', 'LoginController@login')->name('login');
+        Route::post('register', 'RegisterController@register')->name('register');
+        Route::post('send_email_verification/{email}', 'RegisterController@sendEmailVerification')->name('send_email_verification');
+        Route::get('verification', 'RegisterController@verification')->name('verification');
+        Route::post('recovery/{email}', 'RegisterController@recovery')->name('recovery');
+        Route::put('change_password', 'RegisterController@changePassword')->name('change_password');
+    });
+
 
     Route::middleware('jwt.auth')->group(function(){
 
-        Route::post('auth/logout', 'AuthController@logout')->name('logout');
-        Route::put('auth/refresh', 'AuthController@refresh')->name('refresh');
-        Route::get('auth/me', 'AuthController@me')->name('me');
+        Route::namespace('Auth')->name('auth.')->prefix('auth')->group(function() {
+            Route::post('logout', 'LoginController@logout')->name('logout');
+            Route::put('refresh', 'LoginController@refresh')->name('refresh');
+            Route::get('me', 'LoginController@me')->name('me');
+        });
+
 
         Route::apiResources([
             'users' => 'UsersController',

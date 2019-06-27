@@ -13,7 +13,7 @@ class RoleUserTableSeeder extends Seeder
      */
     public function run()
     {
-        $me = User::byEmail('smedeiros.flavio@gmail.com');
+        $me = User::byEmail('smedeiros.flavio@gmail.com')->first();
         $role_admin = Role::byName('admin');
 
         DB::table('role_user')->insert([

@@ -100,4 +100,8 @@ return [
         ],
     ],
 
+    'verification' => [
+        'expire' => env('AUTH_VERIFICATION_EXPIRE', 60),
+    ]
+
 ];

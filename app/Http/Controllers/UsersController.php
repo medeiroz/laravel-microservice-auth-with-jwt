@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Requests\UserRequest;
 use App\Models\Auth\User;
 use Illuminate\Http\Request;
@@ -28,17 +29,11 @@ class UsersController extends Controller
     }
 
 
-    public function store(UserRequest $request): JsonResponse
+    public function store(UserRequest $request)
     {
         $this->middleware('permission:users.store');
 
-        try {
-            $resource = User::create($request->all());
-            return response()->json($resource, Response::HTTP_CREATED);
-
-        } catch (\Exception $e) {
-            return response()->json(['message' => $e->getMessage()], Response::HTTP_BAD_REQUEST);
-        }
+        return (new RegisterController)->register($request);
     }
 
 
