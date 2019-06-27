@@ -4,9 +4,13 @@ namespace App\Models\Auth;
 
 use Illuminate\Database\Eloquent\Builder;
 use Zizaco\Entrust\EntrustPermission;
+use App\Traits\Treat;
 
 class Permission extends EntrustPermission
 {
+
+    use Treat;
+
     protected $fillable = [
         'name',
         'display_name',

@@ -33,24 +33,15 @@ class PermissionsTableSeeder extends Seeder
                 'display_name' => 'Usuarios / Exclusão',
                 'created_at' => now(),
             ],
+
             [
                 'name' => 'users.roles.read',
                 'display_name' => 'Usuários / Papéis / Visualização',
                 'created_at' => now(),
             ],
             [
-                'name' => 'users.roles.store',
-                'display_name' => 'Usuários / Papéis / Criação',
-                'created_at' => now(),
-            ],
-            [
                 'name' => 'users.roles.update',
                 'display_name' => 'Usuários / Papéis / Atualização',
-                'created_at' => now(),
-            ],
-            [
-                'name' => 'users.roles.destroy',
-                'display_name' => 'Usuários / Papéis / Exclusão',
                 'created_at' => now(),
             ],
 
@@ -82,18 +73,8 @@ class PermissionsTableSeeder extends Seeder
                 'created_at' => now(),
             ],
             [
-                'name' => 'roles.permissions.store',
-                'display_name' => 'Papéis / Permissões / Criação',
-                'created_at' => now(),
-            ],
-            [
                 'name' => 'roles.permissions.update',
                 'display_name' => 'Papéis / Permissões / Atualização',
-                'created_at' => now(),
-            ],
-            [
-                'name' => 'roles.permissions.destroy',
-                'display_name' => 'Papéis / Permissões / Exclusão',
                 'created_at' => now(),
             ],
 
@@ -117,6 +98,17 @@ class PermissionsTableSeeder extends Seeder
             [
                 'name' => 'permissions.destroy',
                 'display_name' => 'Permissões / Exclusão',
+                'created_at' => now(),
+            ],
+
+            [
+                'name' => 'users.roles.read',
+                'display_name' => 'Usuários / Papéis / Visualização',
+                'created_at' => now(),
+            ],
+            [
+                'name' => 'users.roles.update',
+                'display_name' => 'Usuários / Papéis / Atualização',
                 'created_at' => now(),
             ],
         ]);

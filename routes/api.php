@@ -20,7 +20,7 @@ Route::name('api.')->group(function(){
     Route::middleware('jwt.auth')->group(function(){
 
         Route::post('auth/logout', 'AuthController@logout')->name('logout');
-        Route::post('auth/refresh', 'AuthController@refresh')->name('refresh');
+        Route::put('auth/refresh', 'AuthController@refresh')->name('refresh');
         Route::get('auth/me', 'AuthController@me')->name('me');
 
         Route::apiResources([
@@ -32,8 +32,9 @@ Route::name('api.')->group(function(){
         Route::get('users/{user}/roles', 'UsersRolesController@index')->name('users.roles.index');
         Route::put('users/{user}/roles', 'UsersRolesController@sync')->name('users.roles.sync');
 
-        //Route::get('transfers/{id}/{relations}/{index?}', 'TransfersController@relations')
-        //    ->name('transfers.relations');
+        Route::get('roles/{role}/permissions', 'RolesPermissionsController@index')->name('roles.permissions.index');
+        Route::put('roles/{role}/permissions', 'RolesPermissionsController@sync')->name('roles.permissions.sync');
+
 
     });
 });

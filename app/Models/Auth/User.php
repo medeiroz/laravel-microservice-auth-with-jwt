@@ -2,6 +2,9 @@
 
 namespace App\Models\Auth;
 
+use Illuminate\Cache\TaggableStore;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Contracts\JWTSubject;
@@ -81,6 +84,19 @@ class User extends Authenticatable implements JWTSubject
     public function setPasswordAttribute(string $value): void
     {
         $this->attributes['password'] = Hash::make($value);
+    }
+
+    public function saveRoles($inputRoles)
+    {
+        if (!empty($inputRoles)) {
+            $this->roles()->sync($inputRoles);
+        } else {
+            $this->roles()->detach();
+        }
+
+        if (Cache::getStore() instanceof TaggableStore) {
+            Cache::tags(Config::get('entrust.role_user_table'))->flush();
+        }
     }
 
 }

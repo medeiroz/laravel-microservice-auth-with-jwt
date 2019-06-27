@@ -6,53 +6,78 @@ use App\Http\Requests\PermissionRequest;
 use App\Models\Auth\Permission;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class PermissionsController extends Controller
 {
 
-    private $permission;
-
-    public function __construct(Permission $permission)
+    public function __construct()
     {
-        $this->permission = $permission;
-
         $this->middleware('permission:permissions.read');
-        $this->middleware('permission:permissions.store')->only('store');
-        $this->middleware('permission:permissions.update')->only('update');
-        $this->middleware('permission:permissions.destroy')->only('destroy');
     }
 
 
     public function index(Request $request): JsonResponse
     {
-        $resources = Permission::treat($request);
-        return response()->json($resources);
+        try {
+            $resources = Permission::treat($request);
+            return response()->json($resources);
+
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], Response::HTTP_BAD_REQUEST);
+        }
     }
 
 
     public function store(PermissionRequest $request): JsonResponse
     {
-        $resource = Permission::create($request->all());
-        return response()->json($resource, 201);
+        $this->middleware('permission:permissions.store');
+
+        try {
+            $resource = Permission::create($request->all());
+            return response()->json($resource, Response::HTTP_CREATED);
+
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], Response::HTTP_BAD_REQUEST);
+        }
     }
 
 
-    public function show(Permission $permission): JsonResponse
+    public function show(Permission $resource): JsonResponse
     {
-        return response()->json($permission, 200);
+        try {
+            return response()->json($resource, Response::HTTP_OK);
+
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], Response::HTTP_BAD_REQUEST);
+        }
     }
 
 
-    public function update(PermissionRequest $request, Permission $permission): JsonResponse
+    public function update(PermissionRequest $request, Permission $resource): JsonResponse
     {
-        $permission->update($request->all());
-        return response()->json($permission, 201);
+        $this->middleware('permission:permissions.update');
+
+        try {
+            $resource->update($request->all());
+            return response()->json($resource, Response::HTTP_OK);
+
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], Response::HTTP_BAD_REQUEST);
+        }
     }
 
 
-    public function destroy(Permission $permission): JsonResponse
+    public function destroy(Permission $resource): JsonResponse
     {
-        $permission->delete();
-        return response()->json(['message' => 'Register deleted successfully'], 201);
+        $this->middleware('permission:permissions.destroy');
+
+        try {
+            $resource->delete();
+            return response()->json($resource, Response::HTTP_OK);
+
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], Response::HTTP_BAD_REQUEST);
+        }
     }
 }

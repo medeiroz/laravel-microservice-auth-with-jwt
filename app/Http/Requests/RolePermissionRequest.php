@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 use Illuminate\Validation\Rule;
 
-class UserRoleRequest extends BaseRequest
+class RolePermissionRequest extends BaseRequest
 {
 
     /**
@@ -14,12 +14,12 @@ class UserRoleRequest extends BaseRequest
     public function rules(): array
     {
         $rules = [
-            'roles' => [
+            'permissions' => [
                 'array',
             ],
-            'roles.*' => [
+            'permissions.*' => [
                 'integer',
-                Rule::exists('roles', 'id'),
+                Rule::exists('permissions', 'id'),
             ],
         ];
 
