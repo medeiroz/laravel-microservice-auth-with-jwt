@@ -37,7 +37,7 @@ class AccountRecovery extends Mailable
         $this->url = URL::temporarySignedRoute(
             'api.auth.change_password',
             now()->addMinutes(config('auth.verification.expire')),
-            ['user' => $this->user->id]
+            ['user' => $this->user->email]
         );
     }
 }

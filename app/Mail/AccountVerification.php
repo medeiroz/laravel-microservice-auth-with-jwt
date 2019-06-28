@@ -38,7 +38,7 @@ class AccountVerification extends Mailable
         $this->url = URL::temporarySignedRoute(
             'api.auth.verification',
             now()->addMinutes(config('auth.verification.expire')),
-            ['user' => $this->user->id]
+            ['user' => $this->user->email]
         );
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RecoveryChangerPasswordRequest;
 use App\Http\Requests\UserRequest;
 use App\Mail\AccountRecovery;
 use App\Mail\AccountVerification;
@@ -33,10 +34,8 @@ class RegisterController extends Controller
             $email = null;
 
             DB::transaction(function() use ($request, &$email) {
-
                 $user = User::create($request->all());
                 $email = $this->sendEmailVerification($user->email);
-
             });
 
             return $email;
@@ -70,7 +69,7 @@ class RegisterController extends Controller
     {
         if ($request->hasValidSignature()) {
 
-            $user = User::find($request->user);
+            $user = User::byEmail($request->user)->first();
 
             if ($user && $user->hasVerifiedEmail() === false) {
                 $user->markEmailAsVerified();
@@ -84,13 +83,11 @@ class RegisterController extends Controller
 
     public function recovery(string $email)
     {
-        $user = $this->user->byEmail($email)->first();
-
-        if (!$user) {
-            return response()->json(['message' => 'Not Found'], Response::HTTP_BAD_REQUEST);
+        if ($user = $this->user->byEmail($email)->first()) {
+            return $this->sendEmailRecovery($user);
         }
 
-        return $this->sendEmailRecovery($user);
+        return response()->json(['message' => 'Not Found'], Response::HTTP_BAD_REQUEST);
     }
 
 
@@ -101,10 +98,15 @@ class RegisterController extends Controller
     }
 
 
-    public function changePassword(Request $request)
+    public function changePassword(RecoveryChangerPasswordRequest $request)
     {
         if ($request->hasValidSignature()) {
-            dd($request->all());
+
+            if ($user = User::byEmail($request->user)->first()) {
+                $user->password = $request->password;
+                $user->save();
+                return response()->json(['message' => 'Password changed successfully'], Response::HTTP_OK);
+            }
         }
 
         return response()->json(['message' => 'Link expired'], Response::HTTP_BAD_REQUEST);
