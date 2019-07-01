@@ -26,14 +26,13 @@ Route::name('api.')->group(function() {
     });
 
 
-    Route::middleware('jwt.auth')->group(function(){
+    Route::middleware(['jwt.auth', 'verified'])->group(function(){
 
         Route::namespace('Auth')->name('auth.')->prefix('auth')->group(function() {
             Route::post('logout', 'LoginController@logout')->name('logout');
             Route::put('refresh', 'LoginController@refresh')->name('refresh');
             Route::get('me', 'LoginController@me')->name('me');
         });
-
 
         Route::apiResources([
             'users' => 'UsersController',
