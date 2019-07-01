@@ -9,7 +9,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\URL;
 
-class AccountRecovery extends Mailable
+class AccountVerificationMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -24,18 +24,19 @@ class AccountRecovery extends Mailable
     }
 
 
+
     public function build()
     {
         return $this
-            ->subject('Account Recovery')
+            ->subject('Account Verification')
             ->to($this->user->email)
-            ->view('emails.account_recovery');
+            ->view('emails.account_verification');
     }
 
     private function make_url()
     {
         $this->url = URL::temporarySignedRoute(
-            'api.auth.change_password',
+            'api.auth.verification',
             now()->addMinutes(config('auth.verification.expire')),
             ['user' => $this->user->email]
         );
