@@ -11,12 +11,6 @@ use Symfony\Component\HttpFoundation\Response;
 class PermissionsController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('permission:permissions.read');
-    }
-
-
     public function index(Request $request): JsonResponse
     {
         try {
@@ -31,8 +25,6 @@ class PermissionsController extends Controller
 
     public function store(PermissionRequest $request): JsonResponse
     {
-        $this->middleware('permission:permissions.store');
-
         try {
             $resource = Permission::create($request->all());
             return response()->json($resource, Response::HTTP_CREATED);
@@ -43,10 +35,10 @@ class PermissionsController extends Controller
     }
 
 
-    public function show(Permission $resource): JsonResponse
+    public function show(Permission $permission): JsonResponse
     {
         try {
-            return response()->json($resource, Response::HTTP_OK);
+            return response()->json($permission, Response::HTTP_OK);
 
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], Response::HTTP_BAD_REQUEST);
@@ -54,13 +46,11 @@ class PermissionsController extends Controller
     }
 
 
-    public function update(PermissionRequest $request, Permission $resource): JsonResponse
+    public function update(PermissionRequest $request, Permission $permission): JsonResponse
     {
-        $this->middleware('permission:permissions.update');
-
         try {
-            $resource->update($request->all());
-            return response()->json($resource, Response::HTTP_OK);
+            $permission->update($request->all());
+            return response()->json($permission, Response::HTTP_OK);
 
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], Response::HTTP_BAD_REQUEST);
@@ -68,13 +58,11 @@ class PermissionsController extends Controller
     }
 
 
-    public function destroy(Permission $resource): JsonResponse
+    public function destroy(Permission $permission): JsonResponse
     {
-        $this->middleware('permission:permissions.destroy');
-
         try {
-            $resource->delete();
-            return response()->json($resource, Response::HTTP_OK);
+            $permission->delete();
+            return response()->json($permission, Response::HTTP_OK);
 
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], Response::HTTP_BAD_REQUEST);

@@ -11,11 +11,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class UsersController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('permission:users.read');
-    }
-
 
     public function index(Request $request): JsonResponse
     {
@@ -31,25 +26,21 @@ class UsersController extends Controller
 
     public function store(UserRequest $request)
     {
-        $this->middleware('permission:users.store');
-
         return (new RegisterController)->register($request);
     }
 
 
-    public function show(User $resource): JsonResponse
+    public function show(User $user): JsonResponse
     {
-        return response()->json($resource, Response::HTTP_OK);
+        return response()->json($user, Response::HTTP_OK);
     }
 
 
-    public function update(UserRequest $request, User $resource): JsonResponse
+    public function update(UserRequest $request, User $user): JsonResponse
     {
-        $this->middleware('permission:users.update');
-
         try {
-            $resource->fill($request->all())->save();
-            return response()->json($resource, Response::HTTP_OK);
+            $user->fill($request->all())->save();
+            return response()->json($user, Response::HTTP_OK);
 
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], Response::HTTP_BAD_REQUEST);
@@ -57,13 +48,11 @@ class UsersController extends Controller
     }
 
 
-    public function destroy(User $resource): JsonResponse
+    public function destroy(User $user): JsonResponse
     {
-        $this->middleware('permission:users.destroy');
-
         try {
-            $resource->delete();
-            return response()->json($resource, Response::HTTP_OK);
+            $user->delete();
+            return response()->json($user, Response::HTTP_OK);
 
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], Response::HTTP_BAD_REQUEST);

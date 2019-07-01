@@ -19,16 +19,6 @@ use Illuminate\Http\JsonResponse;
 class RegisterController extends Controller
 {
 
-    /**
-     * @var User
-     */
-    private $user;
-
-    public function __construct(User $user)
-    {
-        $this->user = $user;
-    }
-
     public function register(UserRequest $request): JsonResponse
     {
         try {
@@ -50,7 +40,7 @@ class RegisterController extends Controller
     public function sendEmailVerification(string $email): JsonResponse
     {
         try {
-            $user = $this->user->byEmail($email)->first();
+            $user = User::byEmail($email)->first();
 
             if ($user && $user->hasVerifiedEmail() === false) {
                 Mail::send(new AccountVerificationMail($user));
@@ -86,7 +76,7 @@ class RegisterController extends Controller
 
     public function recovery(Request $request, string $email)
     {
-        if (($user = $this->user->byEmail($email)->first()) && $request->url) {
+        if (($user = User::byEmail($email)->first()) && $request->url) {
             return $this->sendEmailRecovery($user, $request->url);
         }
 

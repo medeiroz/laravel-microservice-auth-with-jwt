@@ -11,12 +11,6 @@ use Symfony\Component\HttpFoundation\Response;
 class RolesController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('permission:roles.read');
-    }
-
-
     public function index(Request $request): JsonResponse
     {
         try {
@@ -31,8 +25,6 @@ class RolesController extends Controller
 
     public function store(RoleRequest $request): JsonResponse
     {
-        $this->middleware('permission:roles.store');
-
         try {
             $resource = Role::create($request->all());
             return response()->json($resource, Response::HTTP_CREATED);
@@ -43,10 +35,10 @@ class RolesController extends Controller
     }
 
 
-    public function show(Role $resource): JsonResponse
+    public function show(Role $role): JsonResponse
     {
         try {
-            return response()->json($resource, Response::HTTP_OK);
+            return response()->json($role, Response::HTTP_OK);
 
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], Response::HTTP_BAD_REQUEST);
@@ -54,13 +46,11 @@ class RolesController extends Controller
     }
 
 
-    public function update(RoleRequest $request, Role $resource): JsonResponse
+    public function update(RoleRequest $request, Role $role): JsonResponse
     {
-        $this->middleware('permission:roles.update');
-
         try {
-            $resource->update($request->all());
-            return response()->json($resource, Response::HTTP_OK);
+            $role->update($request->all());
+            return response()->json($role, Response::HTTP_OK);
 
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], Response::HTTP_BAD_REQUEST);
@@ -68,11 +58,9 @@ class RolesController extends Controller
     }
 
 
-    public function destroy(Role $resource): JsonResponse
+    public function destroy(Role $role): JsonResponse
     {
-        $this->middleware('permission:roles.destroy');
-
-        $resource->delete();
-        return response()->json($resource, Response::HTTP_OK);
+        $role->delete();
+        return response()->json($role, Response::HTTP_OK);
     }
 }
