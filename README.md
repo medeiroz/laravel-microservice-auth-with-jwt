@@ -25,5 +25,10 @@ Limpar o cache
 docker exec -it api-users-app php artisan cache:clear && composer dumpautoload
 ```
 
+Rodando as Migrations com as Seeders
+```
+docker exec -it api-users-app php artisan migrate:refresh --seed
+```
+
 
 # Documentation
