@@ -60,7 +60,12 @@ class RolesController extends Controller
 
     public function destroy(Role $role): JsonResponse
     {
-        $role->delete();
-        return response()->json($role, Response::HTTP_OK);
+        try {
+            $role->delete();
+            return response()->json($role, Response::HTTP_OK);
+
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], Response::HTTP_BAD_REQUEST);
+        }
     }
 }
