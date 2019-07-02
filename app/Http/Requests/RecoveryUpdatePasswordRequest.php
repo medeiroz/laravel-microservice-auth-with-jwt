@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 use Illuminate\Validation\Rule;
 
-class RecoveryChangerPasswordRequest extends BaseRequest
+class RecoveryUpdatePasswordRequest extends BaseRequest
 {
 
     /**

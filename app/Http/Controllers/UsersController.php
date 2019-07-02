@@ -26,7 +26,7 @@ class UsersController extends Controller
 
     public function store(UserRequest $request)
     {
-        return (new RegisterController)->register($request);
+        return (new RegisterController)->create($request);
     }
 
 

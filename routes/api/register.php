@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 Route::namespace('Auth')->name('register.')->prefix('register')->group(function() {
 
     /** Register **/
-    Route::post('register', 'RegisterController@register')
-        ->name('register');
+    Route::post('create', 'RegisterController@create')
+        ->name('create');
 
     Route::post('send_email_verification/{email}', 'RegisterController@sendEmailVerification')
         ->name('send_email_verification');
@@ -18,7 +18,7 @@ Route::namespace('Auth')->name('register.')->prefix('register')->group(function(
     Route::post('recovery/{email}', 'RegisterController@recovery')
         ->name('recovery');
 
-    Route::put('change_password', 'RegisterController@changePassword')
-        ->name('change_password');
+    Route::put('update_password', 'RegisterController@updatePassword')
+        ->name('update_password');
 });
 

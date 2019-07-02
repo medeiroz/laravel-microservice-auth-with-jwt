@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RecoveryChangerPasswordRequest;
+use App\Http\Requests\RecoveryUpdatePasswordRequest;
 use App\Http\Requests\UserRequest;
 use App\Mail\AccountRecoveryMail;
 use App\Mail\AccountVerificationMail;
@@ -19,7 +19,7 @@ use Illuminate\Http\JsonResponse;
 class RegisterController extends Controller
 {
 
-    public function register(UserRequest $request): JsonResponse
+    public function create(UserRequest $request): JsonResponse
     {
         try {
             $email = null;
@@ -102,7 +102,7 @@ class RegisterController extends Controller
     }
 
 
-    public function changePassword(RecoveryChangerPasswordRequest $request)
+    public function updatePassword(RecoveryUpdatePasswordRequest $request)
     {
         $password_reset = DB::table('password_resets')->where('token', $request->token);
 
