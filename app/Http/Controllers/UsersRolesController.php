@@ -33,7 +33,6 @@ class UsersRolesController extends Controller
         $this->middleware('permission:users.roles.update');
 
         try {
-
             $user->saveRoles($request->roles ?? []);
             return response()->json($user->roles, Response::HTTP_OK);
 
