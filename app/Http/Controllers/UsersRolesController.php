@@ -11,11 +11,6 @@ use Symfony\Component\HttpFoundation\Response;
 class UsersRolesController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('permission:users.roles.read');
-    }
-
     public function index(User $user, Request $request): JsonResponse
     {
         try {
@@ -30,8 +25,6 @@ class UsersRolesController extends Controller
 
     public function sync(User $user, UserRoleRequest $request): JsonResponse
     {
-        $this->middleware('permission:users.roles.update');
-
         try {
             $user->saveRoles($request->roles ?? []);
             return response()->json($user->roles, Response::HTTP_OK);
