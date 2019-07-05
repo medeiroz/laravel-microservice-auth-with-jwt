@@ -101,16 +101,6 @@ class PermissionsTableSeeder extends Seeder
                 'created_at' => now(),
             ],
 
-            [
-                'name' => 'users.roles.read',
-                'display_name' => 'Usuários / Papéis / Visualização',
-                'created_at' => now(),
-            ],
-            [
-                'name' => 'users.roles.update',
-                'display_name' => 'Usuários / Papéis / Atualização',
-                'created_at' => now(),
-            ],
         ]);
     }
 }

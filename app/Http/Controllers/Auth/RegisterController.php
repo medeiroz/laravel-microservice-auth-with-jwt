@@ -93,7 +93,7 @@ class RegisterController extends Controller
             Mail::send(new AccountRecoveryMail($user, $url));
             DB::table('password_resets')->updateOrInsert(['email' => $user->email], ['token' => $token, 'created_at' => now()]);
 
-            return response()->json(['message' => 'Access your email to verify your account'], Response::HTTP_CREATED);
+            return response()->json(['message' => 'Access your email to recovery your password'], Response::HTTP_CREATED);
 
         } catch (\Exception $e) {
 
