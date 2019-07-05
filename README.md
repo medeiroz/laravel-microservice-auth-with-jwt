@@ -1,57 +1,55 @@
 # Laravel Micro Service Auth With Jwt"
 
-Subindo os containers
+Up Containers
 ```
 docker-compose up -d
 ```
 
-Atualizar as dependencias do projeto
+Update project dependences
 ```
 docker exec -it api-users-app composer update
 ```
 
-Copiar o arquivo .env.example
+copy .env.example to .env
 ```
 docker exec -it api-users-app cp .env.example .env
 ```
 
-Gerando a hash do Jwt
+Generate hash Jwt
 ``` 
 docker exec -it api-users-app php artisan jwt:secret
 ```
 
-Limpar o cache
+Clear cache
 ```
 docker exec -it api-users-app php artisan cache:clear && composer dumpautoload
 ```
 
-Rodando as Migrations com as Seeders
+Run Migrations with seeders
 ```
 docker exec -it api-users-app php artisan migrate:refresh --seed
 ```
 
 
-# Documentação
+# Documentation
 
 ## API Resources
-### Verbos permitidos
+### Allowed verbs
  `GET`, `POST`, `PUT`, `PATCH` ou `DELETE`
 
-### Necessário no header de todas as requisições
-Header
+### Required in the header of all requests
 ```
 Content-Type: application/json
 Accept: application/json
 ```
 
-### Necessário no hedader de todas as requisições que precisam estar autorizadas
-Header
+### Required in the Header of all requisitions that need to be authorized
 ```
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
 ```
 
-### Autenticação
-[POST /auth/login](http://127.0.0.1:8000/auth/login) - Fazer login
+### Authentication
+[POST /auth/login](http://127.0.0.1:8000/auth/login) - Login
 
 Request
 ```
@@ -72,8 +70,8 @@ Response
 }
 ```
 
-### Obtendo recurso com autorização necessária
-[GET /auth/me](http://127.0.0.1:8000/auth/me)
+### Getting resource with required authorization
+[GET /auth/me](http://127.0.0.1:8000/auth/me) - Return my information
 
 Request
 ```
@@ -95,9 +93,9 @@ Response
 }
 ```
 
-# Recursos
-## Sem autenticação
-[POST /register/create](http://127.0.0.1:8000/register/create) - Registrar um novo usuário 
+# Resources
+## Without authentication
+[POST /register/create](http://127.0.0.1:8000/register/create) - Register a new user 
 
 Request
 ```
@@ -117,7 +115,7 @@ Response
 ```
 
 
-[POST /register/send_email_verification/{email}](http://127.0.0.1:8000/register/send_email_verification/{email}) - Envia o email para verificação da conta
+[POST /register/send_email_verification/{email}](http://127.0.0.1:8000/register/send_email_verification/{email}) - Send email for account verification
 
 Request
 ```
@@ -133,7 +131,7 @@ Response
 }
 ```
 
-[POST /register/recovery/{email}](http://127.0.0.1:8000/register/recovery/{email}) - Envia o email de recuperação de senha
+[POST /register/recovery/{email}](http://127.0.0.1:8000/register/recovery/{email}) - Send password recovery email
 
 Request
 ```
@@ -151,7 +149,7 @@ Response
 }
 ```
 
-[PUT /register/change_password/?token={token}](http://127.0.0.1:8000/register/change_password/?token={token}) - Faz a auteração da senha após o email de recuperação de senha
+[PUT /register/change_password/?token={token}](http://127.0.0.1:8000/register/change_password/?token={token}) - Makes password change after password recovery email
 
 Request
 ```
@@ -162,7 +160,7 @@ Accept: application/json
 }
 ```
 
-## Com autenticação
+## With authentication
 
 #### Logout
 [POST /auth/logout](http://127.0.0.1:8000/auth/logout) - Logout
@@ -199,8 +197,8 @@ Response
 }
 ```
 
-### Usuários
-[GET /users](http://127.0.0.1:8000/users) - retorna todos os usuários disponíveis atualmente
+### Users
+[GET /users](http://127.0.0.1:8000/users) - Returns all users currently available
 
 Request
 ```
@@ -237,7 +235,7 @@ Response
 }
 ```
 
-[POST /users](http://127.0.0.1:8000/users) - Adiciona um usuário
+[POST /users](http://127.0.0.1:8000/users) - Add User
 
 Request
 ```
@@ -258,7 +256,7 @@ Response
 }
 ```
 
-[GET /users/{id}](http://127.0.0.1:8000/users/{id}) - Retorna um usuário
+[GET /users/{id}](http://127.0.0.1:8000/users/{id}) - Return User
 
 Request
 ```
@@ -281,7 +279,7 @@ Response
 ```
 
 
-[PUT /users/{id}](http://127.0.0.1:8000/users/{id}) - Atualiza todos os campos de um usuário
+[PUT /users/{id}](http://127.0.0.1:8000/users/{id}) - Updates all fields for User
 
 Request
 ```
@@ -308,7 +306,7 @@ Response
 ```
 
 
-[PATCH /users/{id}](http://127.0.0.1:8000/users/{id}) - Atualiza um ou mais campos do usuário
+[PATCH /users/{id}](http://127.0.0.1:8000/users/{id}) - Updates one or more user fields a User
 
 Request
 ```
@@ -333,7 +331,7 @@ Response
 }
 ```
 
-[DELETE /users/{id}](http://127.0.0.1:8000/users/{id}) - Delete um usuário
+[DELETE /users/{id}](http://127.0.0.1:8000/users/{id}) - Delete User
 
 Request
 ```
