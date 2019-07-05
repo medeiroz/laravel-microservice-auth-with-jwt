@@ -1,5 +1,28 @@
 # Laravel Micro Service Auth With Jwt"
 
+## Table of contents
+- [Getting started](#getting-started)
+    * [Clone Repository](#clone-repository)
+    * [Up Project](#up-project)
+- [Documentation](#documentation)
+    * [Allowed verbs](#allowed-verbs)
+    * [Required in the header of all requests](#required-in-the-header-of-all-requests)
+    * [Required in the Header of all requisitions that need to be authorized](#required-in-the-Header-of-all-requisitions-that-need-to-be-authorized)
+    * [Authentication](#authentication)
+    * [Getting resource with required authorization](#getting-resource-with-required-authorization)
+    * [Resources](#resources)
+        * [Without authentication](#without-authentication)
+        * [With authentication](#With authentication)
+
+## Getting startd
+
+### Clone Repository
+```
+git clone https://github.com/MedeirosDev/laravel-microservice-auth-with-jwt.git
+```
+
+
+### Up Project
 Up Containers
 ```
 docker-compose up -d
@@ -31,9 +54,7 @@ docker exec -it api-users-app php artisan migrate:refresh --seed
 ```
 
 
-# Documentation
-
-## API Resources
+## Documentation
 ### Allowed verbs
  `GET`, `POST`, `PUT`, `PATCH` ou `DELETE`
 
