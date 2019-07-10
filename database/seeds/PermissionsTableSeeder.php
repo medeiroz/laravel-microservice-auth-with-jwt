@@ -15,33 +15,33 @@ class PermissionsTableSeeder extends Seeder
             //USERS
             [
                 'name' => 'users.read',
-                'display_name' => 'Usuarios / Visualização',
+                'display_name' => 'Users / Show',
                 'created_at' => now(),
             ],
             [
                 'name' => 'users.store',
-                'display_name' => 'Usuarios / Criação',
+                'display_name' => 'Users / Creation',
                 'created_at' => now(),
             ],
             [
                 'name' => 'users.update',
-                'display_name' => 'Usuarios / Atualização',
+                'display_name' => 'Users / Update',
                 'created_at' => now(),
             ],
             [
                 'name' => 'users.destroy',
-                'display_name' => 'Usuarios / Exclusão',
+                'display_name' => 'Users / Delete',
                 'created_at' => now(),
             ],
 
             [
                 'name' => 'users.roles.read',
-                'display_name' => 'Usuários / Papéis / Visualização',
+                'display_name' => 'Users / Roles / Show',
                 'created_at' => now(),
             ],
             [
                 'name' => 'users.roles.update',
-                'display_name' => 'Usuários / Papéis / Atualização',
+                'display_name' => 'Users / Roles / Update',
                 'created_at' => now(),
             ],
 
@@ -49,32 +49,32 @@ class PermissionsTableSeeder extends Seeder
             // ROLES
             [
                 'name' => 'roles.read',
-                'display_name' => 'Papéis / Visualização',
+                'display_name' => 'Roles / Show',
                 'created_at' => now(),
             ],
             [
                 'name' => 'roles.store',
-                'display_name' => 'Papéis / Criação',
+                'display_name' => 'Roles / Creation',
                 'created_at' => now(),
             ],
             [
                 'name' => 'roles.update',
-                'display_name' => 'Papéis / Atualização',
+                'display_name' => 'Roles / Update',
                 'created_at' => now(),
             ],
             [
                 'name' => 'roles.destroy',
-                'display_name' => 'Papéis / Exclusão',
+                'display_name' => 'Roles / Delete',
                 'created_at' => now(),
             ],
             [
                 'name' => 'roles.permissions.read',
-                'display_name' => 'Papéis / Permissões / Visualização',
+                'display_name' => 'Roles / Permissions / Show',
                 'created_at' => now(),
             ],
             [
                 'name' => 'roles.permissions.update',
-                'display_name' => 'Papéis / Permissões / Atualização',
+                'display_name' => 'Roles / Permissions / Update',
                 'created_at' => now(),
             ],
 
@@ -82,22 +82,22 @@ class PermissionsTableSeeder extends Seeder
             // PERMISSIONS
             [
                 'name' => 'permissions.read',
-                'display_name' => 'Permissões / Visualização',
+                'display_name' => 'Permissions / Show',
                 'created_at' => now(),
             ],
             [
                 'name' => 'permissions.store',
-                'display_name' => 'Permissões / Criação',
+                'display_name' => 'Permissions / Creation',
                 'created_at' => now(),
             ],
             [
                 'name' => 'permissions.update',
-                'display_name' => 'Permissões / Atualização',
+                'display_name' => 'Permissions / Update',
                 'created_at' => now(),
             ],
             [
                 'name' => 'permissions.destroy',
-                'display_name' => 'Permissões / Exclusão',
+                'display_name' => 'Permissions / Delete',
                 'created_at' => now(),
             ],
 
