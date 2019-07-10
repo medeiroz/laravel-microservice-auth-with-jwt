@@ -1,7 +1,7 @@
 {
     "name": "medeirosdev/laravelmicroservices",
     "type": "project",
-    "description": "Microserviço - Usuários",
+    "description": "Microservice - User",
     "keywords": [
         "project",
         "medeirosdev",
