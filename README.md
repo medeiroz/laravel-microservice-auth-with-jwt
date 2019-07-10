@@ -16,11 +16,12 @@
             * [Users](#users)
             * [Roles](#roles)
             * [Permissions](#permissions)
-    * [Filter / Select / Paginate / Sort](#filter---select---paginate---sort)
+    * [Filter / Select / Paginate / Sort](#filter-select-paginate-sort)
         * [Filter](#filter)
         * [Select](#select)
         * [Paginate](#paginate)
         * [Sort](#sort)
+        * [Combine Tools](#combine-tools)
 
 ## Getting startd
 
@@ -1039,7 +1040,7 @@ http://dev.docker.com:8000/permissions?sort=-updated_at,+created_at
 http://dev.docker.com:8000/permissions?sort=-name,-created_at
 ```
 
-#### Combine filter, select, paginate and sort
+#### Combine Tools
 Combine filter, select, paginate and sort data
 ```
 http://dev.docker.com:8000/permissions?
