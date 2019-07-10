@@ -74,7 +74,7 @@ class RegisterController extends Controller
     }
 
 
-    public function recovery(Request $request, string $email)
+    public function recovery(RecoveryRequest $request, string $email)
     {
         if (($user = User::byEmail($email)->first()) && $request->url) {
             return $this->sendEmailRecovery($user, $request->url);

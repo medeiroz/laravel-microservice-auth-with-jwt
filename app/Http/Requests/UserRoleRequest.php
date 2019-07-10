@@ -15,6 +15,7 @@ class UserRoleRequest extends BaseRequest
     {
         $rules = [
             'roles' => [
+                'required',
                 'array',
             ],
             'roles.*' => [

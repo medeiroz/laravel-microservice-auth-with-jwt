@@ -12,7 +12,10 @@
     * [Getting resource with required authorization](#getting-resource-with-required-authorization)
     * [Resources](#resources)
         * [Without authentication](#without-authentication)
-        * [With authentication](#With authentication)
+        * [With authentication](#with-authentication)
+            * [Users](#users)
+            * [Roles](#roles)
+            * [Permissions](#permissions)
 
 ## Getting startd
 
@@ -277,7 +280,7 @@ Response
 }
 ```
 
-[GET /users/{id}](http://127.0.0.1:8000/users/{id}) - Return User
+[GET /users/{id}](http://127.0.0.1:8000/users/{id}) - Show User
 
 Request
 ```
@@ -371,5 +374,505 @@ Response
     "email_verified_at": "2019-07-05 21:37:30",
     "created_at": "2019-07-05 21:37:30",
     "updated_at": "2019-07-05 21:37:49"
+}
+```
+
+[GET /users/{id}/roles](http://127.0.0.1:8000/users/{id}/roles) - Show user roles
+
+Request
+```
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+{ } 
+```
+
+Response
+```json
+{
+    "current_page": 1,
+    "data": [
+        {
+            "id": 1,
+            "name": "admin",
+            "display_name": "Administrador",
+            "description": "Administrador do sistema.",
+            "created_at": "2019-07-10 11:41:27",
+            "updated_at": null,
+            "user_id": 1,
+            "role_id": 1
+        }
+    ],
+    "first_page_url": "http://127.0.0.1:8000/users/1/roles?page=1",
+    "from": 1,
+    "last_page": 1,
+    "last_page_url": "http://127.0.0.1:8000/users/1/roles?page=1",
+    "next_page_url": null,
+    "path": "http://127.0.0.1:8000/users/1/roles",
+    "per_page": 15,
+    "prev_page_url": null,
+    "to": 1,
+    "total": 1
+}
+```
+
+[PUT /users/{id}/roles](http://127.0.0.1:8000/users/{id}/roles) - Update all user roles
+
+Request
+```
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+{
+    "roles": [
+	    1
+    ]
+}
+```
+
+Response
+```json
+[
+    {
+        "id": 1,
+        "name": "admin",
+        "display_name": "Administrador",
+        "description": "Administrador do sistema.",
+        "created_at": "2019-07-10 11:41:27",
+        "updated_at": null,
+        "pivot": {
+            "user_id": 1,
+            "role_id": 1
+        }
+    }
+]
+```
+
+### Roles
+[GET /roles](http://127.0.0.1:8000/roles) - Returns all roles currently available
+
+Request
+```
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+{ } 
+```
+
+Response
+```json
+{
+    "current_page": 1,
+    "data": [
+        {
+            "id": 1,
+            "name": "admin",
+            "display_name": "Administrador",
+            "description": "Administrador do sistema.",
+            "created_at": "2019-07-10 11:41:27",
+            "updated_at": null
+        }
+    ],
+    "first_page_url": "http://127.0.0.1:8000/roles?page=1",
+    "from": 1,
+    "last_page": 1,
+    "last_page_url": "http://127.0.0.1:8000/roles?page=1",
+    "next_page_url": null,
+    "path": "http://127.0.0.1:8000/roles",
+    "per_page": 15,
+    "prev_page_url": null,
+    "to": 1,
+    "total": 1
+}
+```
+
+
+[POST /roles](http://127.0.0.1:8000/roles) - Add Role
+
+Request
+```
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+{
+    "name": "Test",
+    "display_name": "Test.",
+    "description": "Test Role"
+}
+```
+
+Response
+```json
+{
+    "name": "Test",
+    "display_name": "Test.",
+    "description": "Test Role",
+    "updated_at": "2019-07-10 11:53:03",
+    "created_at": "2019-07-10 11:53:03",
+    "id": 2
+}
+```
+
+[GET /roles/{id}](http://127.0.0.1:8000/roles/{id}) - Show Role
+
+Request
+```
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+{ } 
+```
+
+Response
+```json
+{
+    "id": 1,
+    "name": "admin",
+    "display_name": "Administrador",
+    "description": "Administrador do sistema.",
+    "created_at": "2019-07-10 11:41:27",
+    "updated_at": null
+}
+```
+
+
+[PUT /roles/{id}](http://127.0.0.1:8000/roles/{id}) - Updates all fields for Role
+
+Request
+```
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+{
+    "name": "administrator",
+    "display_name": "administrator",
+    "description": "administrator system"
+}
+```
+
+Response
+```json
+{
+    "id": 1,
+    "name": "administrator",
+    "display_name": "administrator",
+    "description": "administrator system",
+    "created_at": "2019-07-10 11:41:27",
+    "updated_at": "2019-07-10 11:56:34"
+}
+```
+
+
+[PATCH /roles/{id}](http://127.0.0.1:8000/roles/{id}) - Updates one or more user fields a Role
+
+Request
+```
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+{
+	"name": "adm",
+    "display_name": "Admin..."
+}
+```
+
+Response
+```json
+{
+    "id": 1,
+    "name": "adm",
+    "display_name": "Admin...",
+    "description": "administrator system",
+    "created_at": "2019-07-10 11:41:27",
+    "updated_at": "2019-07-10 11:58:09"
+}
+```
+
+[DELETE /roles/{id}](http://127.0.0.1:8000/roles/{id}) - Delete Role
+
+Request
+```
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+{ } 
+```
+
+Response
+```json
+{
+    "id": 1,
+    "name": "adm",
+    "display_name": "Admin...",
+    "description": "administrator system",
+    "created_at": "2019-07-10 11:41:27",
+    "updated_at": "2019-07-10 11:58:09"
+}
+```
+
+[GET /roles/{id}/permissions](http://127.0.0.1:8000/roles/{id}/permissions) - Show role permissions
+
+Request
+```
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+{ } 
+```
+
+Response
+```json
+{
+    "current_page": 1,
+    "data": [
+        {
+            "id": 1,
+            "name": "users.read",
+            "display_name": "Usuarios / Visualização",
+            "description": null,
+            "created_at": "2019-07-10 11:59:31",
+            "updated_at": null,
+            "permission_id": 1,
+            "role_id": 1
+        },
+        {
+            "id": 2,
+            "name": "users.store",
+            "display_name": "Usuarios / Criação",
+            "description": null,
+            "created_at": "2019-07-10 11:59:31",
+            "updated_at": null,
+            "permission_id": 2,
+            "role_id": 1
+        },
+        ...
+    ],
+    "first_page_url": "http://dev.docker.com:8000/roles/1/permissions?page=1",
+    "from": 1,
+    "last_page": 2,
+    "last_page_url": "http://dev.docker.com:8000/roles/1/permissions?page=2",
+    "next_page_url": "http://dev.docker.com:8000/roles/1/permissions?page=2",
+    "path": "http://dev.docker.com:8000/roles/1/permissions",
+    "per_page": 15,
+    "prev_page_url": null,
+    "to": 15,
+    "total": 16
+}
+```
+
+[PUT /roles/{id}/permissions](http://127.0.0.1:8000/roles/{id}/permissions) - Update all role permissions
+
+Request
+```
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+{
+	"permissions": [
+		1,
+		2,
+		3
+	]
+}
+```
+
+Response
+```json
+[
+    {
+        "id": 1,
+        "name": "users.read",
+        "display_name": "Usuarios / Visualização",
+        "description": null,
+        "created_at": "2019-07-10 12:05:44",
+        "updated_at": null,
+        "pivot": {
+            "role_id": 1,
+            "permission_id": 1
+        }
+    },
+    {
+        "id": 2,
+        "name": "users.store",
+        "display_name": "Usuarios / Criação",
+        "description": null,
+        "created_at": "2019-07-10 12:05:44",
+        "updated_at": null,
+        "pivot": {
+            "role_id": 1,
+            "permission_id": 2
+        }
+    },
+    ...
+]
+```
+
+### Permissions
+[GET /permissions](http://127.0.0.1:8000/permissions) - Returns all permissions currently available
+
+Request
+```
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+{ } 
+```
+
+Response
+```json
+{
+    "current_page": 1,
+    "data": [
+        {
+            "id": 1,
+            "name": "users.read",
+            "display_name": "Usuarios / Visualização",
+            "description": null,
+            "created_at": "2019-07-10 12:09:48",
+            "updated_at": null
+        },
+        {
+            "id": 2,
+            "name": "users.store",
+            "display_name": "Usuarios / Criação",
+            "description": null,
+            "created_at": "2019-07-10 12:09:48",
+            "updated_at": null
+        },
+        ...
+    ],
+    "first_page_url": "http://dev.docker.com:8000/permissions?page=1",
+    "from": 1,
+    "last_page": 2,
+    "last_page_url": "http://dev.docker.com:8000/permissions?page=2",
+    "next_page_url": "http://dev.docker.com:8000/permissions?page=2",
+    "path": "http://dev.docker.com:8000/permissions",
+    "per_page": 15,
+    "prev_page_url": null,
+    "to": 15,
+    "total": 16
+}
+```
+
+
+[POST /permissions](http://127.0.0.1:8000/permissions) - Add Permission
+
+Request
+```
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+{
+    "name": "permissao.teste",
+    "display_name": "Permissão de teste.",
+    "description": "Apenas para teste"
+}
+```
+
+Response
+```json
+{
+    "name": "permissao.teste",
+    "display_name": "Permissão de teste.",
+    "description": "Apenas para teste",
+    "updated_at": "2019-07-10 12:13:19",
+    "created_at": "2019-07-10 12:13:19",
+    "id": 17
+}
+```
+
+[GET /permissions/{id}](http://127.0.0.1:8000/permissions/{id}) - Show Permission
+
+Request
+```
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+{ } 
+```
+
+Response
+```json
+{
+    "id": 1,
+    "name": "users.read",
+    "display_name": "Usuarios / Visualização",
+    "description": null,
+    "created_at": "2019-07-10 12:09:48",
+    "updated_at": null
+}
+```
+
+
+[PUT /permissions/{id}](http://127.0.0.1:8000/permissions/{id}) - Updates all fields for Permission
+
+Request
+```
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+{
+    "name": "permissao.teste",
+    "display_name": "Permissão de teste...",
+    "description": "Apenas para teste"
+}
+```
+
+Response
+```json
+{
+    "id": 17,
+    "name": "permissao.teste",
+    "display_name": "Permissão de teste...",
+    "description": "Apenas para teste",
+    "created_at": "2019-07-10 12:13:19",
+    "updated_at": "2019-07-10 12:17:21"
+}
+```
+
+
+[PATCH /permissions/{id}](http://127.0.0.1:8000/permissions/{id}) - Updates one or more user fields a Permission
+
+Request
+```
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+{
+    "display_name": "Permissão de... test"
+}
+```
+
+Response
+```json
+{
+    "id": 17,
+    "name": "permissao.teste",
+    "display_name": "Permissão de... test",
+    "description": "Apenas para teste",
+    "created_at": "2019-07-10 12:13:19",
+    "updated_at": "2019-07-10 12:18:22"
+}
+```
+
+[DELETE /permission/{id}](http://127.0.0.1:8000/permission/{id}) - Delete Permission
+
+Request
+```
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+{ } 
+```
+
+Response
+```json
+{
+    "id": 17,
+    "name": "permissao.teste",
+    "display_name": "Permissão de... test",
+    "description": "Apenas para teste",
+    "created_at": "2019-07-10 12:13:19",
+    "updated_at": "2019-07-10 12:18:22"
 }
 ```
