@@ -12,7 +12,13 @@
     * [Getting resource with required authorization](#getting-resource-with-required-authorization)
     * [Resources](#resources)
         * [Without authentication](#without-authentication)
+            * [Register User](#register-user)
+            * [Send email verification](#send-email-verification)
+            * [Recovery account](#recovery-account)
+            * [Change password](#change-password)
         * [With authentication](#with-authentication)
+            * [Logout](#logout)
+            * [Refresh jwt](#refresh-jwt)
             * [Users](#users)
             * [Roles](#roles)
             * [Permissions](#permissions)
@@ -125,6 +131,7 @@ Response
 
 # Resources
 ## Without authentication
+### Register User
 [POST /register/create](http://127.0.0.1:8000/register/create) - Register a new user 
 
 Request
@@ -144,7 +151,7 @@ Response
 }
 ```
 
-
+### Send email verification
 [POST /register/send_email_verification/{email}](http://127.0.0.1:8000/register/send_email_verification/{email}) - Send email for account verification
 
 Request
@@ -161,6 +168,7 @@ Response
 }
 ```
 
+### Recovery account
 [POST /register/recovery/{email}](http://127.0.0.1:8000/register/recovery/{email}) - Send password recovery email
 
 Request
@@ -179,6 +187,7 @@ Response
 }
 ```
 
+### Change password
 [PUT /register/change_password/?token={token}](http://127.0.0.1:8000/register/change_password/?token={token}) - Makes password change after password recovery email
 
 Request
@@ -209,6 +218,7 @@ Response
 }
 ```
 
+#### Refresh jwt
 [POST /auth/refresh](http://127.0.0.1:8000/auth/refresh) - Refresh Jwt
 
 Request
