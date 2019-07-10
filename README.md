@@ -16,6 +16,11 @@
             * [Users](#users)
             * [Roles](#roles)
             * [Permissions](#permissions)
+    * [Filter / Select / Paginate / Sort](#filter---select---paginate---sort)
+        * [Filter](#filter)
+        * [Select](#select)
+        * [Paginate](#paginate)
+        * [Sort](#sort)
 
 ## Getting startd
 
@@ -875,4 +880,188 @@ Response
     "created_at": "2019-07-10 12:13:19",
     "updated_at": "2019-07-10 12:18:22"
 }
+```
+
+
+###Filter / Select / Paginate / Sort
+#### Filter
+Allow filters ` `, `eq`, `lt`, `lte`, `gt`, `gte`, `like`, `regex`
+
+Obs: ` ` references of `eq`
+--
+Use ` ` and `eq` in field filter `display_name`
+
+` ` and `eq` Filter by equals
+```
+http://dev.docker.com:8000/permissions?display_name=Usuarios / Atualização
+```
+```
+http://dev.docker.com:8000/permissions?display_name[eq]=Usuarios / Atualização
+```
+
+Use `lt` in field filter `created_at`
+
+`lt` Filter by less
+```
+http://dev.docker.com:8000/permissions?created_at[lt]=2019-07-11
+```
+```
+http://dev.docker.com:8000/permissions?created_at[lt]=2019-07-11 12:30
+```
+
+Use `lte` in field filter `created_at`
+
+`lte` Filter by less or equal
+```
+http://dev.docker.com:8000/permissions?created_at[lte]=2019-07-11
+```
+```
+http://dev.docker.com:8000/permissions?created_at[lte]=2019-07-11 12:30
+```
+
+Use `gt` in field filter `updated_at`
+
+`gt` Filter by greater
+```
+http://dev.docker.com:8000/permissions?updated_at[gt]=2019-07-11
+```
+```
+http://dev.docker.com:8000/permissions?updated_at[gt]=2019-07-11 12:30
+```
+
+Use `gte` in field filter `updated_at`
+
+`gte` Filter by greater or equal
+```
+http://dev.docker.com:8000/permissions?updated_at[gte]=2019-07-11
+```
+```
+http://dev.docker.com:8000/permissions?updated_at[gte]=2019-07-11 12:30
+```
+
+Use `lte` and `gte` in field filter `created_at`
+
+`lte` Filter by less or equal
+
+`gte` Filter by greater or equal
+```
+http://dev.docker.com:8000/permissions?created_at[lte]=2019-07-11&created_at[gte]=2019-06-11
+produce =>   created_at <= 2019-07-11 && created_at >= 2019-06-11
+```
+
+Use `like` in field filter `display_name`
+
+`like` Filter by contains
+```
+http://dev.docker.com:8000/permissions?display_name[like]=Usuarios
+```
+```
+http://dev.docker.com:8000/permissions?display_name[like]=Criação
+```
+
+Use `regex` in field filter `name`
+
+`regex` Filter by regular expression - [https://dev.mysql.com/doc/refman/5.6/en/regexp.html](https://dev.mysql.com/doc/refman/5.6/en/regexp.html)
+```
+http://dev.docker.com:8000/permissions?name[regex]=[a-z\\.]
+```
+```
+http://dev.docker.com:8000/permissions?name[regex]=[0-9]
+```
+
+
+#### Select
+select specific fields for resources
+```
+http://dev.docker.com:8000/permissions?fields=name,display_name
+```
+Response
+```json
+{
+    "current_page": 1,
+    "data": [
+        {
+            "name": "users.read",
+            "display_name": "Usuarios / Visualização"
+        },
+        {
+            "name": "users.store",
+            "display_name": "Usuarios / Criação"
+        },
+        {
+            "name": "users.update",
+            "display_name": "Usuarios / Atualização"
+        },
+        ...
+    ],
+    "first_page_url": "http://dev.docker.com:8000/permissions?fields=name,display_name&page=1",
+    ...
+}
+```
+
+#### Paginate
+Paginate Data
+
+`per_page` default: 15 - Accept `all` to returl all results 
+
+`page` default: 1
+
+
+```
+http://dev.docker.com:8000/permissions?page=1&per_page=15
+http://dev.docker.com:8000/permissions
+```
+```
+http://dev.docker.com:8000/permissions?page=2&per_page=15
+http://dev.docker.com:8000/permissions?page=2
+```
+```
+http://dev.docker.com:8000/permissions?per_page=all
+```
+
+#### Sort
+Sort Data
+
+`ASC` => ` ` or `+`
+
+`DESC` => `-`
+```
+http://dev.docker.com:8000/permissions?sort=name,-display_name
+http://dev.docker.com:8000/permissions?sort=+name,-display_name
+```
+```
+http://dev.docker.com:8000/permissions?sort=+created_at
+```
+```
+http://dev.docker.com:8000/permissions?sort=-updated_at,+created_at
+```
+```
+http://dev.docker.com:8000/permissions?sort=-name,-created_at
+```
+
+#### Combine filter, select, paginate and sort
+Combine filter, select, paginate and sort data
+```
+http://dev.docker.com:8000/permissions?
+    fields=name,display_name&
+    name[like]=user&
+    sort=-name&
+    per_page=30&
+    page=1
+```
+
+```
+http://dev.docker.com:8000/permissions?
+    fields=name,display_name,created_at&
+    name[like]=user&
+    sort=-name&
+    per_page=30
+```
+
+```
+http://dev.docker.com:8000/permissions?
+    fields=name,display_name,created_at&
+    name[gte]=2019-06-10&
+    sort=-updated_at&
+    per_page=all
 ```

@@ -52,7 +52,7 @@ class OrderBy extends BaseRequestRestFullFilter
     {
         $firstLetter = $this->getFirstLetter($column);
 
-        return ($firstLetter === '-') ? 'desc' : 'asc';;
+        return ($firstLetter === '-') ? 'desc' : 'asc';
     }
 
 
