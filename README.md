@@ -411,8 +411,8 @@ Response
         {
             "id": 1,
             "name": "admin",
-            "display_name": "Administrador",
-            "description": "Administrador do sistema.",
+            "display_name": "Administrator",
+            "description": "Administrator of system.",
             "created_at": "2019-07-10 11:41:27",
             "updated_at": null,
             "user_id": 1,
@@ -452,8 +452,8 @@ Response
     {
         "id": 1,
         "name": "admin",
-        "display_name": "Administrador",
-        "description": "Administrador do sistema.",
+        "display_name": "Administrator",
+        "description": "Administrator of system.",
         "created_at": "2019-07-10 11:41:27",
         "updated_at": null,
         "pivot": {
@@ -483,8 +483,8 @@ Response
         {
             "id": 1,
             "name": "admin",
-            "display_name": "Administrador",
-            "description": "Administrador do sistema.",
+            "display_name": "Administrator",
+            "description": "Administrator of system.",
             "created_at": "2019-07-10 11:41:27",
             "updated_at": null
         }
@@ -544,8 +544,8 @@ Response
 {
     "id": 1,
     "name": "admin",
-    "display_name": "Administrador",
-    "description": "Administrador do sistema.",
+    "display_name": "Administrator",
+    "description": "Administrator of system.",
     "created_at": "2019-07-10 11:41:27",
     "updated_at": null
 }
@@ -561,8 +561,8 @@ Accept: application/json
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
 {
     "name": "administrator",
-    "display_name": "administrator",
-    "description": "administrator system"
+    "display_name": "Administrator",
+    "description": "administrator of system 123"
 }
 ```
 
@@ -571,8 +571,8 @@ Response
 {
     "id": 1,
     "name": "administrator",
-    "display_name": "administrator",
-    "description": "administrator system",
+    "display_name": "Administrator",
+    "description": "administrator of system 123",
     "created_at": "2019-07-10 11:41:27",
     "updated_at": "2019-07-10 11:56:34"
 }
@@ -598,7 +598,7 @@ Response
     "id": 1,
     "name": "adm",
     "display_name": "Admin...",
-    "description": "administrator system",
+    "description": "administrator of system 123",
     "created_at": "2019-07-10 11:41:27",
     "updated_at": "2019-07-10 11:58:09"
 }
@@ -620,7 +620,7 @@ Response
     "id": 1,
     "name": "adm",
     "display_name": "Admin...",
-    "description": "administrator system",
+    "description": "administrator system 123",
     "created_at": "2019-07-10 11:41:27",
     "updated_at": "2019-07-10 11:58:09"
 }
@@ -644,7 +644,7 @@ Response
         {
             "id": 1,
             "name": "users.read",
-            "display_name": "Usuarios / Visualização",
+            "display_name": "Users / Show",
             "description": null,
             "created_at": "2019-07-10 11:59:31",
             "updated_at": null,
@@ -654,7 +654,7 @@ Response
         {
             "id": 2,
             "name": "users.store",
-            "display_name": "Usuarios / Criação",
+            "display_name": "Users / Store",
             "description": null,
             "created_at": "2019-07-10 11:59:31",
             "updated_at": null,
@@ -698,7 +698,7 @@ Response
     {
         "id": 1,
         "name": "users.read",
-        "display_name": "Usuarios / Visualização",
+        "display_name": "Users / Show",
         "description": null,
         "created_at": "2019-07-10 12:05:44",
         "updated_at": null,
@@ -710,7 +710,7 @@ Response
     {
         "id": 2,
         "name": "users.store",
-        "display_name": "Usuarios / Criação",
+        "display_name": "Users / Store",
         "description": null,
         "created_at": "2019-07-10 12:05:44",
         "updated_at": null,
@@ -742,7 +742,7 @@ Response
         {
             "id": 1,
             "name": "users.read",
-            "display_name": "Usuarios / Visualização",
+            "display_name": "Users / Show",
             "description": null,
             "created_at": "2019-07-10 12:09:48",
             "updated_at": null
@@ -750,7 +750,7 @@ Response
         {
             "id": 2,
             "name": "users.store",
-            "display_name": "Usuarios / Criação",
+            "display_name": "Users / Store",
             "description": null,
             "created_at": "2019-07-10 12:09:48",
             "updated_at": null
@@ -779,18 +779,18 @@ Content-Type: application/json
 Accept: application/json
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
 {
-    "name": "permissao.teste",
-    "display_name": "Permissão de teste.",
-    "description": "Apenas para teste"
+    "name": "permission.test",
+    "display_name": "permission of test.",
+    "description": "only test"
 }
 ```
 
 Response
 ```json
 {
-    "name": "permissao.teste",
-    "display_name": "Permissão de teste.",
-    "description": "Apenas para teste",
+    "name": "permission.test",
+    "display_name": "permission of test.",
+    "description": "only test",
     "updated_at": "2019-07-10 12:13:19",
     "created_at": "2019-07-10 12:13:19",
     "id": 17
@@ -812,7 +812,7 @@ Response
 {
     "id": 1,
     "name": "users.read",
-    "display_name": "Usuarios / Visualização",
+    "display_name": "Users / Show",
     "description": null,
     "created_at": "2019-07-10 12:09:48",
     "updated_at": null
@@ -828,9 +828,9 @@ Content-Type: application/json
 Accept: application/json
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
 {
-    "name": "permissao.teste",
-    "display_name": "Permissão de teste...",
-    "description": "Apenas para teste"
+    "name": "permission.test",
+    "display_name": "permission of test...",
+    "description": "only test..."
 }
 ```
 
@@ -838,9 +838,9 @@ Response
 ```json
 {
     "id": 17,
-    "name": "permissao.teste",
-    "display_name": "Permissão de teste...",
-    "description": "Apenas para teste",
+    "name": "permission.test",
+    "display_name": "permission of test...",
+    "description": "only test...",
     "created_at": "2019-07-10 12:13:19",
     "updated_at": "2019-07-10 12:17:21"
 }
@@ -855,7 +855,7 @@ Content-Type: application/json
 Accept: application/json
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
 {
-    "display_name": "Permissão de... test"
+    "display_name": "permission of test ..."
 }
 ```
 
@@ -863,9 +863,9 @@ Response
 ```json
 {
     "id": 17,
-    "name": "permissao.teste",
-    "display_name": "Permissão de... test",
-    "description": "Apenas para teste",
+    "name": "permission.test",
+    "display_name": "permission of test ...",
+    "description": "only test...",
     "created_at": "2019-07-10 12:13:19",
     "updated_at": "2019-07-10 12:18:22"
 }
@@ -885,9 +885,9 @@ Response
 ```json
 {
     "id": 17,
-    "name": "permissao.teste",
-    "display_name": "Permissão de... test",
-    "description": "Apenas para teste",
+    "name": "permission.test",
+    "display_name": "permission of test ...",
+    "description": "only test...",
     "created_at": "2019-07-10 12:13:19",
     "updated_at": "2019-07-10 12:18:22"
 }
@@ -904,10 +904,10 @@ Use ` ` and `eq` in field filter `display_name`
 
 ` ` and `eq` Filter by equals
 ```
-http://dev.docker.com:8000/permissions?display_name=Usuarios / Atualização
+http://dev.docker.com:8000/permissions?display_name=Users / Update
 ```
 ```
-http://dev.docker.com:8000/permissions?display_name[eq]=Usuarios / Atualização
+http://dev.docker.com:8000/permissions?display_name[eq]=Users / Update
 ```
 
 Use `lt` in field filter `created_at`
@@ -964,10 +964,10 @@ Use `like` in field filter `display_name`
 
 `like` Filter by contains
 ```
-http://dev.docker.com:8000/permissions?display_name[like]=Usuarios
+http://dev.docker.com:8000/permissions?display_name[like]=Users
 ```
 ```
-http://dev.docker.com:8000/permissions?display_name[like]=Criação
+http://dev.docker.com:8000/permissions?display_name[like]=Store
 ```
 
 Use `regex` in field filter `name`
@@ -993,15 +993,15 @@ Response
     "data": [
         {
             "name": "users.read",
-            "display_name": "Usuarios / Visualização"
+            "display_name": "Users / Show"
         },
         {
             "name": "users.store",
-            "display_name": "Usuarios / Criação"
+            "display_name": "Users / Store"
         },
         {
             "name": "users.update",
-            "display_name": "Usuarios / Atualização"
+            "display_name": "Users / Update"
         },
         ...
     ],
