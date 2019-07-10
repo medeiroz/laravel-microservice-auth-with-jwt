@@ -2,6 +2,7 @@
 
 ## Table of contents
 - [Getting started](#getting-started)
+    * [References](#references)
     * [Clone Repository](#clone-repository)
     * [Up Project](#up-project)
 - [Documentation](#documentation)
@@ -30,6 +31,10 @@
         * [Combine Tools](#combine-tools)
 
 ## Getting startd
+
+### References
+Laravel Micro Service Auth With Jwt use [Zizaco/Entrust](https://github.com/Zizaco/entrust) package to Users ACL
+
 
 ### Clone Repository
 ```
