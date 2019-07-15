@@ -84,9 +84,10 @@ Content-Type: application/json
 Accept: application/json
 ```
 
-### Required in the Header of all requisitions that need to be authorized
+### Required hash in the Header of all requisitions that need to be authorized
+Insert your generated hash
 ```
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+Authorization: Bearer YourGeneratedHash
 ```
 
 ### Authentication
@@ -105,7 +106,7 @@ Accept: application/json
 Response
 ```
 {
-    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc",
+    "access_token": "YourGeneratedHash",
     "token_type": "bearer",
     "expires_in": 3600
 }
@@ -118,7 +119,7 @@ Request
 ```
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+Authorization: Bearer YourGeneratedHash
 { }
 ```
 
@@ -249,7 +250,7 @@ Request
 ```
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+Authorization: Bearer YourGeneratedHash
 { } 
 ```
 
@@ -286,7 +287,7 @@ Request
 ```
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+Authorization: Bearer YourGeneratedHash
 {
     "name": "Flavio Medeiros",
     "email": "example@mail.com",
@@ -307,7 +308,7 @@ Request
 ```
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+Authorization: Bearer YourGeneratedHash
 { } 
 ```
 
@@ -330,7 +331,7 @@ Request
 ```
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+Authorization: Bearer YourGeneratedHash
 {
     "name": "Flavio Medeiros",
     "email": "example@mail.com",
@@ -357,7 +358,7 @@ Request
 ```
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+Authorization: Bearer YourGeneratedHash
 {
     "name": "Flavio da Silva Medeiros",
     ...
@@ -382,7 +383,7 @@ Request
 ```
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+Authorization: Bearer YourGeneratedHash
 { } 
 ```
 
@@ -404,7 +405,7 @@ Request
 ```
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+Authorization: Bearer YourGeneratedHash
 { } 
 ```
 
@@ -443,7 +444,7 @@ Request
 ```
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+Authorization: Bearer YourGeneratedHash
 {
     "roles": [
 	    1
@@ -476,7 +477,7 @@ Request
 ```
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+Authorization: Bearer YourGeneratedHash
 { } 
 ```
 
@@ -514,7 +515,7 @@ Request
 ```
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+Authorization: Bearer YourGeneratedHash
 {
     "name": "Test",
     "display_name": "Test.",
@@ -540,7 +541,7 @@ Request
 ```
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+Authorization: Bearer YourGeneratedHash
 { } 
 ```
 
@@ -563,11 +564,11 @@ Request
 ```
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+Authorization: Bearer YourGeneratedHash
 {
     "name": "administrator",
     "display_name": "Administrator",
-    "description": "administrator of system 123"
+    "description": "Administrator of AppExample"
 }
 ```
 
@@ -577,7 +578,7 @@ Response
     "id": 1,
     "name": "administrator",
     "display_name": "Administrator",
-    "description": "administrator of system 123",
+    "description": "Administrator of AppExample",
     "created_at": "2019-07-10 11:41:27",
     "updated_at": "2019-07-10 11:56:34"
 }
@@ -590,7 +591,7 @@ Request
 ```
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+Authorization: Bearer YourGeneratedHash
 {
 	"name": "adm",
     "display_name": "Admin..."
@@ -603,7 +604,7 @@ Response
     "id": 1,
     "name": "adm",
     "display_name": "Admin...",
-    "description": "administrator of system 123",
+    "description": "Administrator of AppExample",
     "created_at": "2019-07-10 11:41:27",
     "updated_at": "2019-07-10 11:58:09"
 }
@@ -615,7 +616,7 @@ Request
 ```
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+Authorization: Bearer YourGeneratedHash
 { } 
 ```
 
@@ -637,7 +638,7 @@ Request
 ```
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+Authorization: Bearer YourGeneratedHash
 { } 
 ```
 
@@ -687,7 +688,7 @@ Request
 ```
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+Authorization: Bearer YourGeneratedHash
 {
 	"permissions": [
 		1,
@@ -729,13 +730,13 @@ Response
 ```
 
 ### Permissions
-[GET /permissions](http://127.0.0.1:8000/permissions) - Returns all permissions currently available
+[GET /permissions](http://127.0.0.1:8000/permissions) - Returns all permissions available
 
 Request
 ```
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+Authorization: Bearer YourGeneratedHash
 { } 
 ```
 
@@ -782,7 +783,7 @@ Request
 ```
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+Authorization: Bearer YourGeneratedHash
 {
     "name": "permission.test",
     "display_name": "permission of test.",
@@ -808,7 +809,7 @@ Request
 ```
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+Authorization: Bearer YourGeneratedHash
 { } 
 ```
 
@@ -831,7 +832,7 @@ Request
 ```
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+Authorization: Bearer YourGeneratedHash
 {
     "name": "permission.test",
     "display_name": "permission of test...",
@@ -852,13 +853,13 @@ Response
 ```
 
 
-[PATCH /permissions/{id}](http://127.0.0.1:8000/permissions/{id}) - Updates one or more user fields a Permission
+[PATCH /permissions/{id}](http://127.0.0.1:8000/permissions/{id}) - Updates one or more fields of Permission
 
 Request
 ```
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+Authorization: Bearer YourGeneratedHash
 {
     "display_name": "permission of test ..."
 }
@@ -882,7 +883,7 @@ Request
 ```
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9kZXYuZG9ja2VyLmNvbTo4MDAwXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU2MjM1OTc2MywiZXhwIjoxNTYyMzYzMzYzLCJuYmYiOjE1NjIzNTk3NjMsImp0aSI6IloyMklEcklZSXhiaTBLYloiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.dPzPdRvcQd-yagIvdoOD_y3knDMCVHcKpbCW_U2FNSc
+Authorization: Bearer YourGeneratedHash
 { } 
 ```
 
@@ -1018,7 +1019,7 @@ Response
 #### Paginate
 Paginate Data
 
-`per_page` default: 15 - Accept `all` to returl all results 
+`per_page` default: 15 - Accept `all` to return all results 
 
 `page` default: 1
 
