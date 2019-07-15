@@ -16,9 +16,12 @@ class UsersTableSeeder extends Seeder
             [
                 'name' => 'Flávio Medeiros',
                 'email' => 'smedeiros.flavio@gmail.com',
+                'phone' => '+5519981427191',
                 'password' => Hash::make('secret'),
                 'email_verified_at' => now(),
+                'phone_verified_at' => now(),
                 'created_at' => now(),
+                'updated_at' => now(),
             ],
         ]);
     }

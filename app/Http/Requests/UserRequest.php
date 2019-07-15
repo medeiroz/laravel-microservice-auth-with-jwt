@@ -16,6 +16,7 @@ class UserRequest extends BaseRequest
         $rules = [
             'name' => 'string|max:254',
             'email' => 'email|unique:users,email',
+            'phone' => 'regex:/^[0-9]+$/|unique:users,phone',
             'password' => 'string|between:6,20',
         ];
 
@@ -29,6 +30,14 @@ class UserRequest extends BaseRequest
         }
 
         return $rules;
+    }
+
+
+    public function messages()
+    {
+        return [
+            'phone.regex' => 'The phone must be a number.',
+        ];
     }
 
 }

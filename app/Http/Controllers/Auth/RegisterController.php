@@ -5,12 +5,11 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RecoveryUpdatePasswordRequest;
 use App\Http\Requests\UserRequest;
-use App\Mail\AccountRecoveryMail;
-use App\Mail\AccountVerificationMail;
 use App\Models\Auth\User;
+use App\Notifications\SendEmailRecovery;
+use App\Notifications\SendEmailVerification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\JsonResponse;
@@ -21,12 +20,18 @@ class RegisterController extends Controller
 
     public function create(UserRequest $request): JsonResponse
     {
+
         try {
             $email = null;
 
             DB::transaction(function () use ($request, &$email) {
                 $user = User::create($request->all());
                 $email = $this->sendEmailVerification($user->email);
+
+                if ($email->getStatusCode() !== 200) {
+                    throw new \Exception(json_decode($email->getContent())->message);
+                }
+
             });
 
             return $email;
@@ -43,7 +48,9 @@ class RegisterController extends Controller
             $user = User::byEmail($email)->first();
 
             if ($user && $user->hasVerifiedEmail() === false) {
-                Mail::send(new AccountVerificationMail($user));
+
+                $user->notify(new SendEmailVerification);
+
                 return response()->json(['message' => 'Access your email to verify your account'],
                     Response::HTTP_CREATED);
             }
@@ -63,6 +70,9 @@ class RegisterController extends Controller
         if ($request->hasValidSignature()) {
 
             $user = User::byEmail($request->user)->first();
+
+            if (!$user)
+                $user = User::byPhone($request->user)->first();
 
             if ($user && $user->hasVerifiedEmail() === false) {
                 $user->markEmailAsVerified();
@@ -90,7 +100,8 @@ class RegisterController extends Controller
             $token = sha1($user->toJson() . now() . Str::random(10));
             $url = "{$url}?token={$token}";
 
-            Mail::send(new AccountRecoveryMail($user, $url));
+            $this->verification(new SendEmailRecovery($url));
+
             DB::table('password_resets')->updateOrInsert(['email' => $user->email], ['token' => $token, 'created_at' => now()]);
 
             return response()->json(['message' => 'Access your email to recovery your password'], Response::HTTP_CREATED);

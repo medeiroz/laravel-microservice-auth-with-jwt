@@ -29,6 +29,7 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
     protected $fillable = [
         'name',
         'email',
+        'phone',
         'password',
     ];
 
@@ -77,6 +78,10 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
         return $builder->where($this->table . ".email", $email);
     }
 
+    public function scopeByPhone($builder, string $phone)
+    {
+        return $builder->where($this->table . ".phone", $phone);
+    }
 
     public function getFirstNameAttribute(): string
     {

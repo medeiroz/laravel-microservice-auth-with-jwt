@@ -12,7 +12,7 @@ class LoginController extends Controller
 {
     public function login(Request $request): JsonResponse
     {
-        $credentials = $request->only(['email', 'password']);
+        $credentials = $request->only(['email', 'phone', 'password']);
 
         if (! $token = auth()->attempt($credentials)) {
             return response()->json(['message' => 'Unauthorized'], Response::HTTP_UNAUTHORIZED);
