@@ -16,7 +16,7 @@ class UserRequest extends BaseRequest
         $rules = [
             'name' => 'string|max:254',
             'email' => 'email|unique:users,email',
-            'phone' => 'regex:/^[0-9]+$/|unique:users,phone',
+            'phone' => 'regex:/^[\+0-9]+$/|unique:users,phone',
             'password' => 'string|between:6,20',
         ];
 
@@ -27,6 +27,7 @@ class UserRequest extends BaseRequest
 
         if ($this->methodIsPutOrPatch() && !empty($this->user->id)) {
             $rules['email'] .= ',' . $this->user->id;
+            $rules['phone'] .= ',' . $this->user->id;
         }
 
         return $rules;
