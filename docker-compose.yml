@@ -14,18 +14,23 @@ services:
     environment:
       - APP_ENV=local
       - APP_URL=http://dev.docker.com:8000
+
       - DB_HOST=api-users-mysql
       - DB_DATABASE=users
       - DB_USERNAME=root
       - DB_PASSWORD=root
+
       - CACHE_DRIVER=redis
       - SESSION_DRIVER=redis
+
       - REDIS_HOST=api-users-redis
+
       - MAIL_HOST=smtp.mailtrap.io
       - MAIL_PORT=2525
       - MAIL_USERNAME=8c40019abeb8ba
       - MAIL_PASSWORD=0f1fa2683e9204
       - MAIL_ENCRYPTION=null
+
       - PAGINATE_PER_PAGE=15
       - AUTH_VERIFICATION_EXPIRE=60
 
