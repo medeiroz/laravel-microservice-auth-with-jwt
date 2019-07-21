@@ -19,7 +19,6 @@ class UsersTableSeeder extends Seeder
                 'phone' => '+5519981427191',
                 'password' => Hash::make('secret'),
                 'email_verified_at' => now(),
-                'phone_verified_at' => now(),
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
