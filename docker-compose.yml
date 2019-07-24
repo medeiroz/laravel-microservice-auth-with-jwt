@@ -27,13 +27,8 @@ services:
 
       - MAIL_HOST=smtp.mailtrap.io
       - MAIL_PORT=2525
-      - MAIL_USERNAME=8c40019abeb8ba
-      - MAIL_PASSWORD=0f1fa2683e9204
-      - MAIL_ENCRYPTION=null
-
-      - PAGINATE_PER_PAGE=15
-      - AUTH_VERIFICATION_EXPIRE=60
-
+      - MAIL_USERNAME=
+      - MAIL_PASSWORD=
 
   api-users-nginx:
     container_name: api-users-nginx

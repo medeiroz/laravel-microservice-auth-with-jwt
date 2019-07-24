@@ -10,9 +10,11 @@ Route::namespace('Auth')->name('auth.')->prefix('auth')->group(function() {
 
     Route::middleware(['jwt.auth', 'verified'])->group(function() {
         Route::post('logout', 'LoginController@logout')->name('logout');
-        Route::put('refresh', 'LoginController@refresh')->name('refresh');
-        Route::get('me', 'LoginController@me')->name('me');
+        Route::any('me', 'LoginController@me')->name('me');
     });
+
+    Route::put('refresh', 'LoginController@refresh')->middleware('jwt.refresh')->name('refresh');
+
 });
 
 
