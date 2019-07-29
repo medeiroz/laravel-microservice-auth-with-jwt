@@ -2,14 +2,18 @@
 
 namespace App\Models\Auth;
 
-use Illuminate\Database\Eloquent\Builder;
-use Zizaco\Entrust\EntrustPermission;
 use App\Traits\Treat;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Zizaco\Entrust\Contracts\EntrustPermissionInterface;
+use Zizaco\Entrust\Traits\EntrustPermissionTrait;
 
-class Permission extends EntrustPermission
+class Permission extends Model implements EntrustPermissionInterface
 {
-
+    use EntrustPermissionTrait;
     use Treat;
+
+    protected $table;
 
     protected $fillable = [
         'name',
@@ -17,6 +21,11 @@ class Permission extends EntrustPermission
         'description',
     ];
 
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+        $this->table = config('entrust.permissions_table');
+    }
 
     public function scopeByName(Builder $builder, string $name)
     {
@@ -24,4 +33,6 @@ class Permission extends EntrustPermission
             ->where($this->table . '.name', $name)
             ->firstOrFail();
     }
+
+
 }

@@ -18,7 +18,7 @@ class Paginate extends BaseRequestRestFullFilter
             $this->resources = ['data' => $this->builder->get()];
 
         } else {
-            $per_page = ((int) $this->request->per_page) ?: env('PAGINATE_PER_PAGE');
+            $per_page = ((int) $this->request->per_page) ?: config('app.paginate.per_page');
             $this->resources = $this->builder->paginate($per_page);
             $this->resources->appends($this->request->all());
         }

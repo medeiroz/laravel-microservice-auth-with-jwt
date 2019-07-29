@@ -102,7 +102,7 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
         }
 
         if (Cache::getStore() instanceof TaggableStore) {
-            Cache::tags(Config::get('entrust.role_user_table'))->flush();
+            Cache::tags(config('entrust.role_user_table'))->flush();
         }
     }
 
