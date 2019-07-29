@@ -33,6 +33,4 @@ class Permission extends Model implements EntrustPermissionInterface
             ->where($this->table . '.name', $name)
             ->firstOrFail();
     }
-
-
 }

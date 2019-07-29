@@ -12,3 +12,5 @@ yarn-error.log
 
 *.log
 /.idea
+
+yarn.lock
