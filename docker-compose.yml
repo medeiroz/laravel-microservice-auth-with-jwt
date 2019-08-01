@@ -11,24 +11,6 @@ services:
       - api-users-redis
     volumes:
       - ./:/application:cached
-    environment:
-      - APP_ENV=local
-      - APP_URL=http://dev.docker.com:8000
-
-      - DB_HOST=api-users-mysql
-      - DB_DATABASE=users
-      - DB_USERNAME=root
-      - DB_PASSWORD=root
-
-      - CACHE_DRIVER=redis
-      - SESSION_DRIVER=redis
-
-      - REDIS_HOST=api-users-redis
-
-      - MAIL_HOST=smtp.mailtrap.io
-      - MAIL_PORT=2525
-      - MAIL_USERNAME=
-      - MAIL_PASSWORD=
 
   api-users-nginx:
     container_name: api-users-nginx
